@@ -16,9 +16,6 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: Color.fromARGB(255, 107, 244, 254)),
       home: HomeScreen(),
     );
   }
@@ -61,15 +58,15 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() {});
         _currentIndex = 0;
       }
-      // print(_currentIndex);
       _pageController.jumpToPage(_currentIndex);
-      // _pageController.jumpTo(_currentIndex+0);
-      // _pageController.animateToPage(
-      //   _currentIndex,
-      //   duration: const Duration(milliseconds: 300),
-      //   curve: Curves.bounceOut,
-      // );
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -121,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   height: 170,
                                   child: SvgPicture.asset(svgList[index]),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 const SizedBox(
@@ -144,12 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                               ],
-                            ))
-                        // child:  FadeIn(
-                        //   animate: true,
-                        //   curve: Curves.easeOut,
-                        //   child: SvgPicture.asset(svgList[index])
-                        //   )  ,
+                            )),
                         );
                   },
                 )),
