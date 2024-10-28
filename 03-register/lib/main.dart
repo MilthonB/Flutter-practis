@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 150,),
+                const SizedBox(height: 150,),
                 Text(
                   'Create Account',
                   style: GoogleFonts.redHatDisplay(
