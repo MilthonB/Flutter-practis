@@ -15,9 +15,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      // theme: ThemeData(
+      //   scaffoldBackgroundColor: Colors.blue
+      // ),
+      home: const HomeScreen(),
     );
   }
 }
@@ -31,34 +34,52 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _obscureText = true;
+ 
+ late Future<void> _svgLoader;
+
+  @override
+  void initState() {
+    super.initState();
+    // Pre-cargar la imagen SVG
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 100,),
-            SvgPicture.asset('assets/images/login/login.svg', height: 100,),
-            const SizedBox(height: 30,),
-            Text(
+        body: DecoratedBox(
+          decoration: const BoxDecoration(
+            color: Color(0xFF017162)
+          ),
+          child: SafeArea(
+            child: Container(
+              decoration: BoxDecoration(
+              // boxShadow: [ BoxShadow( color: const Color.fromARGB(255, 100, 96, 192).withOpacity(0.5), spreadRadius: 5, blurRadius: 7, offset: Offset(0, 3),)],  
+              color: Colors.white,
+                borderRadius: BorderRadius.circular(40)
+              ),
+            margin: const EdgeInsets.all(15),
+              child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Column(
+                              // crossAxisAlignment: CrossAxisAlignment.center,
+                            
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 100,),
+                                SvgPicture.asset('assets/images/login/login.svg', height: 100,),
+                                const SizedBox(height: 30,),
+                                Text(
               'Hello Again!',
               textAlign: TextAlign.center,
               style: GoogleFonts.redHatDisplay(
-                  fontSize: 30, color: Colors.blue, fontWeight: FontWeight.w700),
-            ),
-            Text(
+                  fontSize: 30, color: Color(0xFF00BFA6), fontWeight: FontWeight.w700),
+                                ),
+                                Text(
               'Welcome back you have been missed!',
               textAlign: TextAlign.center,
               style: GoogleFonts.redHatDisplay(fontSize: 30),
-            ),
-            Padding(
+                                ),
+                                Padding(
               padding: const EdgeInsets.all(30.0),
               child: Column(
                 children: [
@@ -128,14 +149,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: GoogleFonts.redHatDisplay(),
                     ),
                   ),
-        
+                            
                   const SizedBox(height: 30,),
                   SizedBox(
                     width: double.infinity,
                     height: 60,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color(0xFF00BFA6),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -143,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {}, 
                       child: Text('Sign in', style: GoogleFonts.redHatDisplay( fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),),),
                   ),
-        
+                            
                   const SizedBox(height: 30,),
                   Row(
                     children: [
@@ -161,9 +182,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),),
                     ],
                   ),
-        
+                            
                   const SizedBox(height: 15,),
-        
+                            
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -184,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Spacer(),
                     ],
                   ),
-        
+                            
                   const SizedBox(height: 30,),
                   RichText(
                     text: TextSpan(
@@ -193,17 +214,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         TextSpan(
                           text: 'Register now',
-                          style: GoogleFonts.redHatDisplay(color: Colors.blue, fontWeight: FontWeight.bold)
+                          style: GoogleFonts.redHatDisplay(color: Color(0xFF00BFA6), fontWeight: FontWeight.bold)
                         )
                       ]
                     )
                   ),
                 ],
               ),
+                                ),
+                              ],
+                            ),
+              ),
             ),
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
+  
+  
+
+
 }
