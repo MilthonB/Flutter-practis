@@ -1,59 +1,65 @@
-import 'dart:async';
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:animate_do/animate_do.dart';
+import 'package:logincompleto/config/routes/routes-app.dart';
+// import 'package:animate_do/animate_do.dart';
 
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
-      //   scaffoldBackgroundColor: Colors.blue
-      // ),
-      home: const HomeScreen(),
-    );
-  }
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
 
-  late Future<void> _svgLoader;
+  // late Future<void> _svgLoader;
+  // bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
+    // _setExecutedFlag();
     // Pre-cargar la imagen SVG
+    // _loadData();
   }
+
+  // void _loadData()async{
+
+  //   await Future.delayed(Duration(seconds: 2));
+
+  //   setState(() {
+  //     _isLoading = false;
+  //   });
+
+  // }
+
+  // void _setExecutedFlag() async { 
+  //   SharedPreferences prefs = await SharedPreferences.getInstance(); 
+  //   prefs.setBool('loginScreen', true);
+  // }
 
   @override
   Widget build(BuildContext context) {
+
+    // if(_isLoading){
+    //   return const CircularProgressIndicator();
+    // }
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 132, 183, 255),
+        backgroundColor: const Color.fromARGB(255, 132, 183, 255),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(40)),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -66,10 +72,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       backgroundColor: Color.fromARGB(255, 109, 170, 255),
                       radius: 80,
                       child: CircleAvatar(
-                        backgroundColor: Colors.amber,
+                        backgroundColor: Colors.white,
                         radius: 75,
-                        backgroundImage: AssetImage('assets/images/login/login.png'),
-                        ),
+                        backgroundImage:
+                            AssetImage('assets/images/login/login.png'),
+                      ),
                       // maxRadius: 150,
                     ),
                     // SvgPicture.asset(
@@ -90,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'Welcome back you have been missed!',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.redHatDisplay(fontSize: 25 ),
+                      style: GoogleFonts.redHatDisplay(fontSize: 25),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(30.0),
@@ -113,8 +120,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderRadius: BorderRadius.circular(15)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  borderSide:
-                                      const BorderSide(style: BorderStyle.solid)),
+                                  borderSide: const BorderSide(
+                                      style: BorderStyle.solid)),
                             ),
                           ),
                           const SizedBox(
@@ -159,9 +166,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Align(
                             alignment: AlignmentDirectional.centerEnd,
-                            child: Text(
-                              'Recovery Password',
-                              style: GoogleFonts.redHatDisplay(),
+                            child: TextButton(
+                              child: Text('Recovery Password',
+                                  style: GoogleFonts.redHatDisplay()),
+                              onPressed: () {
+                                context.push('/securitycheckouut');
+                              },
                             ),
                           ),
                           const SizedBox(
@@ -260,11 +270,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: GoogleFonts.redHatDisplay(
                                       color: Colors.black),
                                   children: [
-                                TextSpan(
-                                    text: 'Register now',
-                                    style: GoogleFonts.redHatDisplay(
-                                        color: Color(0xFF00B0FF),
-                                        fontWeight: FontWeight.bold))
+                                WidgetSpan(
+                                    child: GestureDetector(
+                                  onTap: () {
+                                    context.push('/register');
+                                  },
+                                  child: Text('Register now',
+                                      style: GoogleFonts.redHatDisplay(
+                                          color: const Color(0xFF00B0FF),
+                                          fontWeight: FontWeight.bold)),
+                                ))
                               ])),
                         ],
                       ),
