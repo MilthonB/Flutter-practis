@@ -1,14 +1,9 @@
-// ignore_for_file: file_names, depend_on_referenced_packages, use_build_context_synchronously
-
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:logincompleto/config/routes/routes-app.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -17,7 +12,7 @@ class WelcomeScreen extends StatefulWidget {
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
   List<String> svgList = <String>[
     'assets/images/welcome/initial2.svg',
     'assets/images/welcome/initial3.svg',
@@ -37,14 +32,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   late PageController _pageController;
   late Timer _timer;
   int _currentIndex = 0;
-  // bool _loginExecuted = false;
+  late AnimationController _animationController;
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: svgList.length);
-    
-    // _checkLoginExecuted();
+    _animationController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
+
     _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       if (_currentIndex < svgList.length - 1) {
         _currentIndex++;
@@ -56,28 +51,42 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     });
   }
 
-  // Future<void> _checkLoginExecuted() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   bool? executed = prefs.getBool('screen2Executed');
-  //   if (executed != null && executed) {
-  //     setState(() {
-  //       _loginExecuted = true;
-  //     });
-  //   }
-  // }
-
-
   @override
   void dispose() {
     _pageController.dispose();
     _timer.cancel();
+    _animationController.dispose();
     super.dispose();
   }
 
-  // void _stopPageViewAndTimer() { 
-  //   _timer.cancel(); // Cancelar el Timer 
-  //   _pageController.dispose(); // Detener el PageController 
-  // }
+  void _showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Center(
+          child: FadeTransition(
+            opacity: _animationController,
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 75,
+              backgroundImage: const AssetImage('assets/images/login/login.png'),
+            ),
+          ),
+        );
+      },
+    );
+
+    // Inicia la animación en bucle
+    _animationController.repeat(reverse: true);
+
+    // Simula la carga
+    Future.delayed(const Duration(seconds: 3), () {
+      _animationController.stop(); // Detiene la animación
+      Navigator.of(context).pop(); // Cierra el diálogo
+      context.push('/login'); // Navega a la pantalla de login
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +162,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Center(
                 child: Text(
-                  'Explore all the most existing jobs roles based on your interesent and study major',
+                  'Explore all the most exciting job roles based on your interests and study major',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.redHatDisplay(
                       color: Colors.black45,
@@ -192,31 +201,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0)),
                   ),
-                  onPressed: () async {
-                    // Mostrar loading indicator
-
-                    // if(_loginExecuted){
-                    //   context.push('/login');
-                    // }
-
-                    showDialog(
-                      context: context,
-                      barrierDismissible: false,
-                      builder: (context) => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-
-
-                    // Simular carga (puedes reemplazar esto con tu lógica real)
-                    await Future.delayed(const Duration(seconds: 3));
-
-                    // Cerrar el loading indicator
-                    Navigator.of(context).pop();
-
-                    // Navegar a la pantalla de login
-                    context.push('/login');
-                  },
+                  onPressed: _showLoadingDialog,
                   child: Text(
                     'Log In',
                     style: GoogleFonts.redHatDisplay(

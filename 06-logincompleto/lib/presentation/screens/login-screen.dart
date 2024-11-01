@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:logincompleto/config/routes/routes-app.dart';
+// import 'package:logincompleto/config/routes/routes-app.dart';
 // import 'package:animate_do/animate_do.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 30,
                     ),
                     Text(
-                      'Ensigna!',
+                      'AnimalSyncs!',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.redHatDisplay(
                           fontSize: 25,
@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      'Welcome back you have been missed!',
+                      'El cuidado de tu mascota es importante!',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.redHatDisplay(fontSize: 25),
                     ),
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               // label: const Text('User'),
                               hintStyle: GoogleFonts.redHatDisplay(
                                   color: Colors.black38),
-                              hintText: 'Enter username',
+                              hintText: 'Ingrea tu correo electronico',
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide: const BorderSide(
@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 // label: const Text('User'),
                                 hintStyle: GoogleFonts.redHatDisplay(
                                     color: Colors.black38),
-                                hintText: 'Password',
+                                hintText: 'Contraseña',
                                 enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
                                     borderSide: const BorderSide(
@@ -167,10 +167,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           Align(
                             alignment: AlignmentDirectional.centerEnd,
                             child: TextButton(
-                              child: Text('Recovery Password',
+                              child: Text('Recuperar contraseña',
                                   style: GoogleFonts.redHatDisplay()),
                               onPressed: () {
-                                context.push('/securitycheckouut');
+                                context.push('/securitycheckout');
                               },
                             ),
                           ),
@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               onPressed: () {},
                               child: Text(
-                                'Sign in',
+                                'Iniciar Sesión',
                                 style: GoogleFonts.redHatDisplay(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -211,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Or continue with',
+                                  'O puedes ingresar con',
                                   style: GoogleFonts.redHatDisplay(),
                                 ),
                               ),
@@ -266,7 +266,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           RichText(
                               text: TextSpan(
-                                  text: 'Not a memeber? ',
+                                  text: 'No eres un miembro? ',
                                   style: GoogleFonts.redHatDisplay(
                                       color: Colors.black),
                                   children: [
@@ -275,7 +275,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   onTap: () {
                                     context.push('/register');
                                   },
-                                  child: Text('Register now',
+                                  child: Text('Registrate',
                                       style: GoogleFonts.redHatDisplay(
                                           color: const Color(0xFF00B0FF),
                                           fontWeight: FontWeight.bold)),
