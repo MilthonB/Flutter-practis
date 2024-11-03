@@ -1,59 +1,59 @@
-import 'dart:async';
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:animate_do/animate_do.dart';
-
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
-      //   scaffoldBackgroundColor: Colors.blue
-      // ),
-      home: const HomeScreen(),
-    );
-  }
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
 
-  late Future<void> _svgLoader;
+  // late Future<void> _svgLoader;
+  // bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
+    // _setExecutedFlag();
     // Pre-cargar la imagen SVG
+    // _loadData();
   }
+
+  // void _loadData()async{
+
+  //   await Future.delayed(Duration(seconds: 2));
+
+  //   setState(() {
+  //     _isLoading = false;
+  //   });
+
+  // }
+
+  // void _setExecutedFlag() async { 
+  //   SharedPreferences prefs = await SharedPreferences.getInstance(); 
+  //   prefs.setBool('loginScreen', true);
+  // }
 
   @override
   Widget build(BuildContext context) {
+
+    // if(_isLoading){
+    //   return const CircularProgressIndicator();
+    // }
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 132, 183, 255),
+        backgroundColor: const Color.fromARGB(255, 132, 183, 255),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(40)),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -66,10 +66,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       backgroundColor: Color.fromARGB(255, 109, 170, 255),
                       radius: 80,
                       child: CircleAvatar(
-                        backgroundColor: Colors.amber,
+                        backgroundColor: Colors.white,
                         radius: 75,
-                        backgroundImage: AssetImage('assets/images/login/login.png'),
-                        ),
+                        backgroundImage:
+                            AssetImage('assets/images/login/login.png'),
+                      ),
                       // maxRadius: 150,
                     ),
                     // SvgPicture.asset(
@@ -80,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 30,
                     ),
                     Text(
-                      'Ensigna!',
+                      'AnimalSyncs!',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.redHatDisplay(
                           fontSize: 25,
@@ -88,9 +89,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      'Welcome back you have been missed!',
+                      'El cuidado de tu mascota es importante!',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.redHatDisplay(fontSize: 25 ),
+                      style: GoogleFonts.redHatDisplay(fontSize: 25),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(30.0),
@@ -101,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               // label: const Text('User'),
                               hintStyle: GoogleFonts.redHatDisplay(
                                   color: Colors.black38),
-                              hintText: 'Enter username',
+                              hintText: 'Ingrea tu correo electronico',
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
                                   borderSide: const BorderSide(
@@ -113,8 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderRadius: BorderRadius.circular(15)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  borderSide:
-                                      const BorderSide(style: BorderStyle.solid)),
+                                  borderSide: const BorderSide(
+                                      style: BorderStyle.solid)),
                             ),
                           ),
                           const SizedBox(
@@ -126,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 // label: const Text('User'),
                                 hintStyle: GoogleFonts.redHatDisplay(
                                     color: Colors.black38),
-                                hintText: 'Password',
+                                hintText: 'Contraseña',
                                 enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
                                     borderSide: const BorderSide(
@@ -159,9 +160,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Align(
                             alignment: AlignmentDirectional.centerEnd,
-                            child: Text(
-                              'Recovery Password',
-                              style: GoogleFonts.redHatDisplay(),
+                            child: TextButton(
+                              child: Text('Recuperar contraseña',
+                                  style: GoogleFonts.redHatDisplay()),
+                              onPressed: () {
+                                context.push('/securitycheckout');
+                              },
                             ),
                           ),
                           const SizedBox(
@@ -177,9 +181,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                print('Click en el home');
+                                context.push('/homeview');
+                              },
                               child: Text(
-                                'Sign in',
+                                'Iniciar Sesión',
                                 style: GoogleFonts.redHatDisplay(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -201,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Or continue with',
+                                  'O puedes ingresar con',
                                   style: GoogleFonts.redHatDisplay(),
                                 ),
                               ),
@@ -256,15 +263,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           RichText(
                               text: TextSpan(
-                                  text: 'Not a memeber? ',
+                                  text: 'No eres un miembro? ',
                                   style: GoogleFonts.redHatDisplay(
                                       color: Colors.black),
                                   children: [
-                                TextSpan(
-                                    text: 'Register now',
-                                    style: GoogleFonts.redHatDisplay(
-                                        color: Color(0xFF00B0FF),
-                                        fontWeight: FontWeight.bold))
+                                WidgetSpan(
+                                    child: GestureDetector(
+                                  onTap: () {
+                                    context.push('/register');
+                                  },
+                                  child: Text('Registrate',
+                                      style: GoogleFonts.redHatDisplay(
+                                          color: const Color(0xFF00B0FF),
+                                          fontWeight: FontWeight.bold)),
+                                ))
                               ])),
                         ],
                       ),
