@@ -1,15 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:logincompleto/config/routes/routes-app.dart';
-// import 'package:animate_do/animate_do.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -187,7 +181,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                print('Click en el home');
+                                context.push('/homeview');
+                              },
                               child: Text(
                                 'Iniciar Sesión',
                                 style: GoogleFonts.redHatDisplay(
