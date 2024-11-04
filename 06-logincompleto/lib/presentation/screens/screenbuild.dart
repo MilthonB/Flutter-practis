@@ -33,12 +33,13 @@ class _ScreenBuildState extends State<ScreenBuild> {
   Widget build(BuildContext context) {
 
     if( pageController.hasClients ){
-      pageController.animateToPage(widget.navigationShell.currentIndex, duration: Duration(milliseconds: 250), curve: Curves.easeInOut);
+      pageController.animateToPage(widget.navigationShell.currentIndex, duration: Duration(milliseconds: 250), curve: Curves.easeOutBack);
     }
 
     return Scaffold(
       body: PageView(
-        controller: pageController,
+        physics: NeverScrollableScrollPhysics(),
+        // controller: pageController,
         children: [widget.navigationShell],
       ),
       bottomNavigationBar: _CustomBottomNavigation( navigationShell: widget.navigationShell,),
@@ -69,7 +70,10 @@ class _CustomBottomNavigationState extends State<_CustomBottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      currentIndex: widget.navigationShell.currentIndex,
       type: BottomNavigationBarType.fixed,
+      selectedItemColor: Colors.blue,
+      unselectedItemColor: Colors.black54,
       elevation: 0,
       onTap: (value) {
         return _goBranch(value);
@@ -77,8 +81,8 @@ class _CustomBottomNavigationState extends State<_CustomBottomNavigation> {
       items: const [
 
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.lock_clock), label: ''),
 
       ]
     );

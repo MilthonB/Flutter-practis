@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logincompleto/config/routes/routes-app.dart';
+import 'package:animalSyncs/config/routes/routes-app.dart';
 
 void main() {
   runApp(const MainApp());

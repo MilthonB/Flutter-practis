@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Homescreen extends StatefulWidget {
@@ -14,6 +13,7 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
@@ -31,26 +31,10 @@ class _HomescreenState extends State<Homescreen> {
       ),
       body: Center(
         child: Text(
-          'Benvenidos...',
-          style: GoogleFonts.redHatDisplay(fontSize: 20),
+          'Benvenidosa Home...',
+          style: GoogleFonts.redHatDisplay(fontSize: 20, color: Colors.amber),
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //     backgroundColor: Colors.blue,
-      //     unselectedItemColor: Colors.amber,
-      //     selectedItemColor: Colors.green,
-      //     elevation: 7.0,
-      //     onTap: (value) { // devuelve el indice
-      //       print(value);
-      //       // print(widget.navigationShell.currentIndex);
-      //     },
-      //     items: const [
-      //       BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      //       BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      //       BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      //       BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      //       BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      //     ]),
     );
   }
 }

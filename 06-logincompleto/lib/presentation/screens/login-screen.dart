@@ -11,41 +11,57 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin{
   bool _obscureText = true;
 
-  // late Future<void> _svgLoader;
-  // bool _isLoading = true;
+  late AnimationController _animationController;
 
   @override
   void initState() {
     super.initState();
-    // _setExecutedFlag();
-    // Pre-cargar la imagen SVG
-    // _loadData();
+    _animationController =  AnimationController(vsync: this, duration: const Duration(seconds: 1));
   }
 
-  // void _loadData()async{
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _animationController.dispose();
+  }
 
-  //   await Future.delayed(Duration(seconds: 2));
+  void showDialogLoading(){
+    showDialog(
+      context: context, 
+      barrierDismissible: false,
+      builder: (context) {
+        return Center(
+          child: FadeTransition(
+            opacity: _animationController,
+            child: CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 75,
+                backgroundImage: const AssetImage('assets/images/login/login.png'),
+              ),
+          ),
+        );
+      },
+    );
 
-  //   setState(() {
-  //     _isLoading = false;
-  //   });
+    _animationController.repeat(reverse: true);
 
-  // }
-
-  // void _setExecutedFlag() async { 
-  //   SharedPreferences prefs = await SharedPreferences.getInstance(); 
-  //   prefs.setBool('loginScreen', true);
-  // }
+    Future.delayed(
+      Duration(seconds: 3),
+      () {
+        _animationController.stop();
+        Navigator.of(context).pop();
+        context.push('/homepage');
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
 
-    // if(_isLoading){
-    //   return const CircularProgressIndicator();
-    // }
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 132, 183, 255),
         body: SafeArea(
@@ -181,10 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
-                              onPressed: () {
-                                print('Click en el home');
-                                context.push('/homeview');
-                              },
+                              onPressed: showDialogLoading,
                               child: Text(
                                 'Iniciar Sesión',
                                 style: GoogleFonts.redHatDisplay(

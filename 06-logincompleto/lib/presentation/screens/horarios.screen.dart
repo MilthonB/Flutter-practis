@@ -12,6 +12,7 @@ class _HorariosscreenState extends State<Horariosscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
@@ -29,7 +30,7 @@ class _HorariosscreenState extends State<Horariosscreen> {
       ),
       body: Center(
         child: Text(
-          'Benvenidos...',
+          'Benvenidos Horarios...',
           style: GoogleFonts.redHatDisplay(fontSize: 20),
         ),
       ),

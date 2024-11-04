@@ -201,7 +201,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0)),
                   ),
-                  onPressed: _showLoadingDialog,
+                  onPressed: (){
+                      context.push('/login');
+                  },
                   child: Text(
                     'Log In',
                     style: GoogleFonts.redHatDisplay(

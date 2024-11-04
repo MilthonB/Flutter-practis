@@ -12,6 +12,7 @@ class _AgendascreenState extends State<Agendascreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.amber,
       appBar: AppBar(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
