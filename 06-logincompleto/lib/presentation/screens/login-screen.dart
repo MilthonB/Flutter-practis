@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       () {
         _animationController.stop();
         Navigator.of(context).pop();
-        context.push('/homepage');
+        context.go('/homepage');
       },
     );
   }
