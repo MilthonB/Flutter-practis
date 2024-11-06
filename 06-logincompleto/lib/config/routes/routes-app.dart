@@ -1,5 +1,10 @@
 import 'dart:ui';
 
+import 'package:animalSyncs/presentation/screens/activitylife/activity.dart';
+import 'package:animalSyncs/presentation/screens/adoption/adoption.dart';
+import 'package:animalSyncs/presentation/screens/emergency/emergency.dart';
+import 'package:animalSyncs/presentation/screens/health-care/healthcare.dart';
+import 'package:animalSyncs/presentation/screens/medical-history/home-history.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:animalSyncs/presentation/screens/agenda.screen.dart';
@@ -14,10 +19,9 @@ import 'package:animalSyncs/presentation/screens/welcome-screen.dart';
 
 final _sectionNavigatorkey = GlobalKey<NavigatorState>();
 final appRoutes = GoRouter(
-   navigatorKey: _sectionNavigatorkey,
-   initialLocation: '/',
+  navigatorKey: _sectionNavigatorkey,
+  initialLocation: '/',
   routes: [
-
     GoRoute(
       path: '/',
       pageBuilder: (context, state) {
@@ -95,91 +99,124 @@ final appRoutes = GoRouter(
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        return ScreenBuild(navigationShell: navigationShell,);
+        return ScreenBuild(
+          navigationShell: navigationShell,
+        );
       },
       branches: [
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
+        StatefulShellBranch(routes: [
+          GoRoute(
               path: '/homepage',
               // builder: (context, state) {
               //   return const Homescreen();
               // },
               pageBuilder: (context, state) {
-        return CustomTransitionPage(
-          child: const Homescreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          },
-        );
-      },
+                return CustomTransitionPage(
+                  child: const HomeHistoryScreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                );
+              },
               routes: [
                 GoRoute(
                   path: 'citas',
                   name: 'citas',
-                        pageBuilder: (context, state) {
-        return CustomTransitionPage(
-          child: const Citasscreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          },
-        );
-      },
+                  pageBuilder: (context, state) {
+                    return CustomTransitionPage(
+                      child: const Citasscreen(),
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: child,
+                        );
+                      },
+                    );
+                  },
                 ),
-              ]
-            )
-          ]
-        ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
+              ])
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
               path: '/agenda',
               name: 'agenda',
-                    pageBuilder: (context, state) {
-        return CustomTransitionPage(
-          child: const Agendascreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          },
-        );
-      },
-              routes: []
-            )
-          ]
-        ),
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  child: VetAppointmentsScreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                );
+              },
+              routes: [])
+        ]),
         StatefulShellBranch(
           routes: [
-            GoRoute(
+          GoRoute(
               path: '/horarios',
               name: 'horarios',
-                    pageBuilder: (context, state) {
-        return CustomTransitionPage(
-          child: const Horariosscreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          },
-        );
-      },
-              routes: []
-            )
-          ]
-        ),
-
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  child: AdoptionAndCommunityScreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                );
+              },
+              routes: [])
+        ]),
+        StatefulShellBranch(
+          routes: [
+          GoRoute(
+              path: '/activitylife',
+              name: 'activitylife',
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  child: ActivityAndLifestyleScreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                );
+              },
+              routes: [])
+        ]),
+        StatefulShellBranch(
+          routes: [
+          GoRoute(
+              path: '/adopts',
+              name: 'adopts',
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  child: EmergenciesAndSecurityScreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                );
+              },
+              routes: [])
+        ]),
       ],
     ),
-    
-    
   ],
 );

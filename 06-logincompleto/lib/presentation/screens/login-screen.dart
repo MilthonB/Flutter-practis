@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     _animationController.repeat(reverse: true);
 
     Future.delayed(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       () {
         _animationController.stop();
         Navigator.of(context).pop();

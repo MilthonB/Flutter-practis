@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ScreenBuild extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
@@ -73,6 +74,7 @@ class _CustomBottomNavigationState extends State<_CustomBottomNavigation> {
       currentIndex: widget.navigationShell.currentIndex,
       type: BottomNavigationBarType.fixed,
       selectedItemColor: Colors.blue,
+      backgroundColor: Colors.white,
       unselectedItemColor: Colors.black54,
       elevation: 0,
       onTap: (value) {
@@ -80,9 +82,11 @@ class _CustomBottomNavigationState extends State<_CustomBottomNavigation> {
       },
       items: const [
 
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.lock_clock), label: ''),
+            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.fileMedical, size: 20,), label: 'Salud'),
+            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.stethoscope, size: 20), label: 'Veterinarios'),
+            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.handHoldingHeart, size: 20), label: 'Adopcion'),
+            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.paw, size: 20), label: 'Actividad'),
+            BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.shieldDog, size: 20), label: 'Seguridad'),
 
       ]
     );

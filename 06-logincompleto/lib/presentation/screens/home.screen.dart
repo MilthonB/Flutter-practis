@@ -13,7 +13,7 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      // backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
@@ -30,9 +30,10 @@ class _HomescreenState extends State<Homescreen> {
         ],
       ),
       body: Center(
-        child: Text(
-          'Benvenidosa Home...',
-          style: GoogleFonts.redHatDisplay(fontSize: 20, color: Colors.amber),
+        child: TextButton(
+          onPressed: () {
+          },
+          child: Text('Benvenidosa Home...', style: GoogleFonts.redHatDisplay(fontSize: 20, color: Colors.amber)),
         ),
       ),
     );
