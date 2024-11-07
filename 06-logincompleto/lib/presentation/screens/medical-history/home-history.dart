@@ -36,7 +36,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
             'AnimalSyncs',
             style: GoogleFonts.redHatDisplay(),
           )),
-          actions: [],
+          // actions: [],
           backgroundColor: Colors.white,
         ),
         body: Column(
@@ -51,12 +51,12 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                   children: [
                     Row(
                       children: [
-                        const FaIcon(
+                        FaIcon(
                           FontAwesomeIcons.handPeace,
                           size: 20,
-                          color: Color.fromARGB(255, 223, 176, 4),
+                          color: Colors.blueGrey[500],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
@@ -72,7 +72,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                             shape: BoxShape.circle,
                             color:
                                 Colors.amber, // Color de fondo del contenedor
-                            border: Border.all(color: Colors.amber, width: 2),
+                            border: Border.all(color: Colors.teal[500]!, width: 2),
                             // borderRadius:
                             //     BorderRadius.circular(15), // Borde redondeado
                           ),
@@ -115,225 +115,435 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                           Column(
                             children: [
                               Container(
-                                width: 70,
-                                height: 70,
                                 decoration: BoxDecoration(
-                                    color: Colors.cyan,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Colors.black, width: 1)),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    'assets/images/home/mascota1.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
+                                  border: Border.all(color: Colors.teal, width: 2),
+                                  shape: BoxShape.circle
+                                ),
+                                child: const CircleAvatar(
+                                  backgroundColor: Colors.teal,
+                                  radius: 30,
+                                  child: FaIcon(FontAwesomeIcons.paw, color: Colors.white,),
                                 ),
                               ),
-                              const SizedBox(
-                                  height:
-                                      10), // Espacio entre el contenedor y el nombre
-                              Text(
-                                'Rex', // Nombre de la mascota, lo puedes cambiar
-                                style: GoogleFonts.redHatDisplay(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black, // Color del texto
-                                ),
-                              ),
+                              const SizedBox(height: 5,),
+                              Text('Add', style: GoogleFonts.redHatDisplay(),),
                             ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10,),
                           Column(
                             children: [
                               Container(
-                                width: 70,
-                                height: 70,
                                 decoration: BoxDecoration(
-                                    color: Colors.deepPurple,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Colors.black, width: 1)),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    'assets/images/home/mascota2.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
+                                  border: Border.all(color: Colors.teal, width: 2),
+                                  shape: BoxShape.circle
+                                ),
+                                child: const CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/home/mascota1.jpg'),
                                 ),
                               ),
-                              const SizedBox(
-                                  height:
-                                      10), // Espacio entre el contenedor y el nombre
-                              Text(
-                                'Tortilla', // Nombre de la mascota, lo puedes cambiar
-                                style: GoogleFonts.redHatDisplay(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black, // Color del texto
-                                ),
-                              ),
+                              const SizedBox(height: 5,),
+                              Text('Galleta', style: GoogleFonts.redHatDisplay(),),
                             ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10,),
                           Column(
                             children: [
                               Container(
-                                width: 70,
-                                height: 70,
                                 decoration: BoxDecoration(
-                                    color: Colors.brown,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Colors.black, width: 1)),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    'assets/images/home/mascota3.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
+                                  border: Border.all(color: Colors.teal, width: 2),
+                                  shape: BoxShape.circle
+                                ),
+                                child: const CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/home/mascota2.jpg'),
                                 ),
                               ),
-                              const SizedBox(
-                                  height:
-                                      10), // Espacio entre el contenedor y el nombre
-                              Text(
-                                'Venado', // Nombre de la mascota, lo puedes cambiar
-                                style: GoogleFonts.redHatDisplay(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black, // Color del texto
-                                ),
-                              ),
+                              const SizedBox(height: 5,),
+                              Text('Torilla', style: GoogleFonts.redHatDisplay(),),
                             ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10,),
                           Column(
                             children: [
                               Container(
-                                width: 70,
-                                height: 70,
                                 decoration: BoxDecoration(
-                                    color: Colors.teal,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Colors.black, width: 1)),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    'assets/images/home/mascota4.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.teal, width: 2)
+                                ),
+                                child: const CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/home/mascota3.jpg'),
                                 ),
                               ),
-                              const SizedBox(
-                                  height:
-                                      10), // Espacio entre el contenedor y el nombre
-                              Text(
-                                'Jack', // Nombre de la mascota, lo puedes cambiar
-                                style: GoogleFonts.redHatDisplay(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black, // Color del texto
-                                ),
-                              ),
+                              const SizedBox(height: 5,),
+                              Text('Rex', style: GoogleFonts.redHatDisplay(),),
                             ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10,),
                           Column(
                             children: [
                               Container(
-                                  width: 70,
-                                  height: 70,
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromARGB(
-                                        255, 210, 237, 234),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                      child: FaIcon(
-                                    FontAwesomeIcons.paw,
-                                    size: 25,
-                                  ))),
-                              const SizedBox(
-                                  height:
-                                      10), // Espacio entre el contenedor y el nombre
-                              Text(
-                                '', // Nombre de la mascota, lo puedes cambiar
-                                style: GoogleFonts.redHatDisplay(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black, // Color del texto
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.teal, width: 2),
+                                  shape: BoxShape.circle
+                                ),
+                                child: const CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/home/mascota4.jpg'),
                                 ),
                               ),
+                              const SizedBox(height: 5,),
+                              Text('Jack', style: GoogleFonts.redHatDisplay(),),
                             ],
                           ),
                         ],
                       ),
+                      // child: Row(
+                      //   children: [
+                      //     Column(
+                      //       children: [
+                      //         Container(
+                      //           width: 70,
+                      //           height: 70,
+                      //           decoration: BoxDecoration(
+                      //               color: Colors.cyan,
+                      //               borderRadius: BorderRadius.circular(10),
+                      //               border: Border.all(
+                      //                   color: Colors.black, width: 1)),
+                      //           child: ClipRRect(
+                      //             borderRadius: BorderRadius.circular(10),
+                      //             child: Image.asset(
+                      //               'assets/images/home/mascota1.jpg',
+                      //               fit: BoxFit.cover,
+                      //             ),
+                      //           ),
+                      //         ),
+                      //         const SizedBox(
+                      //             height:
+                      //                 10), // Espacio entre el contenedor y el nombre
+                      //         Text(
+                      //           'Rex', // Nombre de la mascota, lo puedes cambiar
+                      //           style: GoogleFonts.redHatDisplay(
+                      //             fontSize: 16,
+                      //             fontWeight: FontWeight.bold,
+                      //             color: Colors.black, // Color del texto
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 10,
+                      //     ),
+                      //     Column(
+                      //       children: [
+                      //         Container(
+                      //           width: 70,
+                      //           height: 70,
+                      //           decoration: BoxDecoration(
+                      //               color: Colors.deepPurple,
+                      //               borderRadius: BorderRadius.circular(10),
+                      //               border: Border.all(
+                      //                   color: Colors.black, width: 1)),
+                      //           child: ClipRRect(
+                      //             borderRadius: BorderRadius.circular(10),
+                      //             child: Image.asset(
+                      //               'assets/images/home/mascota2.jpg',
+                      //               fit: BoxFit.cover,
+                      //             ),
+                      //           ),
+                      //         ),
+                      //         const SizedBox(
+                      //             height:
+                      //                 10), // Espacio entre el contenedor y el nombre
+                      //         Text(
+                      //           'Tortilla', // Nombre de la mascota, lo puedes cambiar
+                      //           style: GoogleFonts.redHatDisplay(
+                      //             fontSize: 16,
+                      //             fontWeight: FontWeight.bold,
+                      //             color: Colors.black, // Color del texto
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 10,
+                      //     ),
+                      //     Column(
+                      //       children: [
+                      //         Container(
+                      //           width: 70,
+                      //           height: 70,
+                      //           decoration: BoxDecoration(
+                      //               color: Colors.brown,
+                      //               borderRadius: BorderRadius.circular(10),
+                      //               border: Border.all(
+                      //                   color: Colors.black, width: 1)),
+                      //           child: ClipRRect(
+                      //             borderRadius: BorderRadius.circular(10),
+                      //             child: Image.asset(
+                      //               'assets/images/home/mascota3.jpg',
+                      //               fit: BoxFit.cover,
+                      //             ),
+                      //           ),
+                      //         ),
+                      //         const SizedBox(
+                      //             height:
+                      //                 10), // Espacio entre el contenedor y el nombre
+                      //         Text(
+                      //           'Venado', // Nombre de la mascota, lo puedes cambiar
+                      //           style: GoogleFonts.redHatDisplay(
+                      //             fontSize: 16,
+                      //             fontWeight: FontWeight.bold,
+                      //             color: Colors.black, // Color del texto
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 10,
+                      //     ),
+                      //     Column(
+                      //       children: [
+                      //         Container(
+                      //           width: 70,
+                      //           height: 70,
+                      //           decoration: BoxDecoration(
+                      //               color: Colors.teal,
+                      //               borderRadius: BorderRadius.circular(10),
+                      //               border: Border.all(
+                      //                   color: Colors.black, width: 1)),
+                      //           child: ClipRRect(
+                      //             borderRadius: BorderRadius.circular(10),
+                      //             child: Image.asset(
+                      //               'assets/images/home/mascota4.jpg',
+                      //               fit: BoxFit.cover,
+                      //             ),
+                      //           ),
+                      //         ),
+                      //         const SizedBox(
+                      //             height:
+                      //                 10), // Espacio entre el contenedor y el nombre
+                      //         Text(
+                      //           'Jack', // Nombre de la mascota, lo puedes cambiar
+                      //           style: GoogleFonts.redHatDisplay(
+                      //             fontSize: 16,
+                      //             fontWeight: FontWeight.bold,
+                      //             color: Colors.black, // Color del texto
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 10,
+                      //     ),
+                      //     Column(
+                      //       children: [
+                      //         Container(
+                      //             width: 70,
+                      //             height: 70,
+                      //             decoration: BoxDecoration(
+                      //               color: const Color.fromARGB(
+                      //                   255, 210, 237, 234),
+                      //               borderRadius: BorderRadius.circular(10),
+                      //             ),
+                      //             child: Center(
+                      //                 child: FaIcon(
+                      //               FontAwesomeIcons.paw,
+                      //               size: 25,
+                      //             ))),
+                      //         const SizedBox(
+                      //             height:
+                      //                 10), // Espacio entre el contenedor y el nombre
+                      //         Text(
+                      //           '', // Nombre de la mascota, lo puedes cambiar
+                      //           style: GoogleFonts.redHatDisplay(
+                      //             fontSize: 16,
+                      //             fontWeight: FontWeight.bold,
+                      //             color: Colors.black, // Color del texto
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ],
+                      // ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Material(
-                      elevation: 5,
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        width: double.infinity,
-                        height: 190,
-                        decoration: BoxDecoration(
-                          color: Colors.teal,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Nombre: Rex', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
-                                Text('Especie: Canino', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
-                                Text('Sexo: Macho', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
-                                Text('Edad: 5 años', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
-                                Text('Status: Saludable', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
-                                ElevatedButton.icon(
-                                  style: ElevatedButton.styleFrom(
-                                    // iconColor: Colors.purple,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5)
-                                    )
-                                  ),
-                                  onPressed: () {
-                                  
-                                }, label: Text('Editar', style: GoogleFonts.redHatDisplay(),), icon: FaIcon(FontAwesomeIcons.paw),)
-                              ],
-                            ),
-                            // Spacer(),
-                            Container(
-                              height: 140,
-                              width: 140,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.white, width: 3)
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset('assets/images/home/mascota1.jpg', fit: BoxFit.cover,),
-                              ),
-                            ),
+
+       Card(
+      elevation: 5,
+      color: Colors.teal[50],
+      child: ListTile(
+        title: _buildHeader(),
+        subtitle: _buildSubtitle(),
+      ),
+    ),
+
+                    // Card(
+                    //   elevation: 5,
+                    //   color:  Colors.teal[50],
+                    //   child: ListTile(
+                    //     // leading: CircleAvatar(
+                    //     //   radius: 30,
+                    //     //   backgroundImage: AssetImage('assets/images/home/mascota1.jpg'),
+                    //     // ), 
+                        
+                    //     // Icono de ardorno
+                    //     // leading: FaIcon(FontAwesomeIcons.paw), // Icono de ardorno
+                        // title: Row(
+                        //   children: [
+                        //     const CircleAvatar(
+                        //   radius: 30,
+                        //   backgroundImage: AssetImage('assets/images/home/mascota1.jpg'),
+                        // ), 
+                        // const SizedBox(width: 10,),
+                        //     Column(
+                        //       crossAxisAlignment: CrossAxisAlignment.start,
+                        //       children: [
+                        //         Text('Datos de la mascota', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w600),),
+                        //         Text('Nombre: Galleta', style: GoogleFonts.redHatDisplay(),),
+                        //         Text('Edad: 4 año', style: GoogleFonts.redHatDisplay(),),
+                        //       ],
+                        //     ),
+                    //     const Spacer(),
                             
-                          ],
-                        ),
-                      ),
-                    ),
+                    //         const CircleAvatar(
+                    //           backgroundColor: Colors.teal,
+                    //           // radius: 20,
+                    //           child: FaIcon(FontAwesomeIcons.dog, color: Colors.white,size: 18,)
+                    //           ),
+                    //           // const SizedBox(width: 10,)
+                    //       ],
+                    //     ), // Encabezado
+                        
+                    //     subtitle: Column(
+                    //       // crossAxisAlignment: CrossAxisAlignment.end,
+                    //       children: [
+                    //         const SizedBox(height: 10,),
+                    //         Row(
+                    //           // crossAxisAlignment: CrossAxisAlignment.start,
+                    //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //           children: [
+                    //             // const SizedBox(height: 10),
+                    //             Container(
+                    //               height: 50,
+                    //               width: 170,
+                    //               decoration: BoxDecoration(
+                    //               color: Colors.teal,
+                    //                 borderRadius: BorderRadius.circular(10)
+                    //               ),
+                    //               child: Row(
+                    //                 children: [
+                    //                   const SizedBox(width: 10,),
+                    //                   const FaIcon(FontAwesomeIcons.calendarDays, color: Colors.white,),
+                    //                   const SizedBox(width: 10,),
+                    //                   Text('Lunes . 19 Enero', style: GoogleFonts.redHatDisplay( color: Colors.white),)
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //             // const Spacer(),
+                    //             Container(
+                    //               height: 50,
+                    //               width: 150,
+                    //               decoration: BoxDecoration(
+                    //               color: Colors.teal,
+                    //                 borderRadius: BorderRadius.circular(10)
+                    //               ),
+                    //               child: Row(
+                    //                 children: [
+                    //                   const SizedBox(width: 10,),
+                    //                   const FaIcon(FontAwesomeIcons.clock, color: Colors.white,),
+                    //                   const SizedBox(width: 10,),
+                    //                   Text('8:00 - 10:00', style: GoogleFonts.redHatDisplay( color: Colors.white),)
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //             // Text('Nombre: Galleta', style: GoogleFonts.redHatDisplay(),),
+                    //             // Text('Edad: 4 año', style: GoogleFonts.redHatDisplay(),),
+                            
+                    //           ],
+                    //         ),
+                            
+                    //         const SizedBox(height: 10,),
+                    //             Row(
+                    //               children: [
+                    //                 Expanded(
+                    //                   child: ElevatedButton.icon(
+                    //                     style: ElevatedButton.styleFrom(
+                    //                       backgroundColor: Colors.blueGrey[500],
+                    //                       iconColor: Colors.white,
+                    //                       shape: RoundedRectangleBorder(
+                    //                         borderRadius: BorderRadius.circular(10)
+                    //                       )
+                    //                     ),
+                    //                     label: Text('Ver perfil', style: GoogleFonts.redHatDisplay( color: Colors.white),),
+                    //                     icon: FaIcon(FontAwesomeIcons.bone),
+                    //                     onPressed: () {
+                                        
+                    //                   }, ),
+                    //                 ),
+                    //               ],
+                    //             )
+                    //       ],
+                    //     ), // datos de la mascota
+                    //     // trailing: FaIcon(FontAwesomeIcons.paw), // Foto de la mascota
+                    //   )
+                    // ),
+
+                    // Material(
+                    //   elevation: 5,
+                    //   borderRadius: BorderRadius.circular(10),
+                    //   child: Container(
+                    //     padding: const EdgeInsets.all(10),
+                    //     width: double.infinity,
+                    //     height: 190,
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.teal,
+                    //       borderRadius: BorderRadius.circular(10),
+                    //     ),
+                    //     child: Row(
+                    //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //       children: [
+                    //         Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: [
+                    //             Text('Nombre: Rex', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
+                    //             Text('Especie: Canino', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
+                    //             Text('Sexo: Macho', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
+                    //             Text('Edad: 5 años', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
+                    //             Text('Status: Saludable', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w800, fontSize: 16, color: Colors.white),),
+                    //             ElevatedButton.icon(
+                    //               style: ElevatedButton.styleFrom(
+                    //                 // iconColor: Colors.purple,
+                    //                 shape: RoundedRectangleBorder(
+                    //                   borderRadius: BorderRadius.circular(5)
+                    //                 )
+                    //               ),
+                    //               onPressed: () {
+                                  
+                    //             }, label: Text('Editar', style: GoogleFonts.redHatDisplay(),), icon: const FaIcon(FontAwesomeIcons.paw),)
+                    //           ],
+                    //         ),
+                    //         // Spacer(),
+                    //         Container(
+                    //           height: 140,
+                    //           width: 140,
+                    //           decoration: BoxDecoration(
+                    //             borderRadius: BorderRadius.circular(10),
+                    //             border: Border.all(color: Colors.white, width: 13)
+                    //           ),
+                    //           child: ClipRRect(
+                    //             borderRadius: BorderRadius.circular(10),
+                    //             child: Image.asset('assets/images/home/mascota1.jpg', fit: BoxFit.cover,),
+                    //           ),
+                    //         ),
+                            
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -351,12 +561,30 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          Container(
-                              width: 70,
-                              height: 70,
-                              decoration: BoxDecoration(
-                                  color: Colors.black26,
-                                  borderRadius: BorderRadius.circular(10))),
+                          Column(
+                            children: [
+                              Container(
+                                  width: 70,
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                      color: Colors.teal[300],
+                                      borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(height: 5,),
+
+                                      Center(child: FaIcon(FontAwesomeIcons.shieldDog, size: 35,color: Colors.white,)),
+                                      const SizedBox(height: 5,),
+                          Text('12 Nov 24', style: GoogleFonts.redHatDisplay(color: Colors.white),)
+
+
+                                    ],
+                                  ),
+                                      
+                              ),
+                            ],
+                          ),
                           const SizedBox(
                             width: 10,
                           ),
@@ -364,8 +592,22 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                               width: 70,
                               height: 70,
                               decoration: BoxDecoration(
-                                  color: Colors.blueGrey,
-                                  borderRadius: BorderRadius.circular(10))),
+                                  color: Colors.blue[300],
+                                  borderRadius: BorderRadius.circular(10),),
+                              child: Column(
+                                children: [
+                                      const SizedBox(height: 5,),
+
+                                  Center(child: FaIcon(FontAwesomeIcons.shieldVirus, size: 35,color: Colors.white,)),
+                                      const SizedBox(height: 5,),
+
+                          Text('12 Nov 24', style: GoogleFonts.redHatDisplay(color: Colors.white),)
+
+                                ],
+                              ),
+                          
+                                  
+                          ),
                           const SizedBox(
                             width: 10,
                           ),
@@ -373,8 +615,21 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                               width: 70,
                               height: 70,
                               decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  borderRadius: BorderRadius.circular(10))),
+                                  color: Colors.teal[300],
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                children: [
+                                      const SizedBox(height: 5,),
+
+                                  Center(child: FaIcon(FontAwesomeIcons.shieldDog, size: 35,color: Colors.white,)),
+                                      const SizedBox(height: 5,),
+                          Text('12 Nov 24', style: GoogleFonts.redHatDisplay(color: Colors.white),)
+
+
+                                ],
+                              ),
+                                  
+                                  ),
                           const SizedBox(
                             width: 10,
                           ),
@@ -382,8 +637,19 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                               width: 70,
                               height: 70,
                               decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(10))),
+                                  color: Colors.blue[300],
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                children: [
+                                  const SizedBox(height: 5,),
+                                  Center(child: FaIcon(FontAwesomeIcons.shieldVirus, size: 35,color: Colors.white,)),
+                                  const SizedBox(height: 5,),
+                          
+                          Text('12 Nov 24', style: GoogleFonts.redHatDisplay(color: Colors.white),)
+                                ],
+                              ),
+                                  
+                                  ),
                           const SizedBox(
                             width: 10,
                           ),
@@ -391,26 +657,45 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                               width: 70,
                               height: 70,
                               decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.circular(10))),
+                                  color: Colors.green[300],
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                children: [
+                                  const SizedBox(height: 5,),
+                          
+                                  Center(child: FaIcon(FontAwesomeIcons.shieldDog, size: 35,color: Colors.white,)),
+                                  const SizedBox(height: 5,),
+                          
+                          Text('12 Nov 24', style: GoogleFonts.redHatDisplay(color: Colors.white),)
+                          
+                                ],
+                              ),
+                                  
+                                  ),
                           const SizedBox(
                             width: 10,
                           ),
-                          Container(
-                              width: 70,
-                              height: 70,
-                              decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  borderRadius: BorderRadius.circular(10))),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                              width: 70,
-                              height: 70,
-                              decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  borderRadius: BorderRadius.circular(10))),
+                          // Container(
+                          //     width: 70,
+                          //     height: 70,
+                          //     decoration: BoxDecoration(
+                          //         color: Colors.amber,
+                          //         borderRadius: BorderRadius.circular(10)),
+                          //     child: Center(child: FaIcon(FontAwesomeIcons.shieldVirus, size: 35,color: Colors.white,)),
+                                  
+                          //         ),
+                          // const SizedBox(
+                          //   width: 10,
+                          // ),
+                          // Container(
+                          //     width: 70,
+                          //     height: 70,
+                          //     decoration: BoxDecoration(
+                          //         color: Colors.amber,
+                          //         borderRadius: BorderRadius.circular(10)),
+                          //     child: Center(child: FaIcon(FontAwesomeIcons.shieldVirus, size: 35,color: Colors.white,)),
+                                  
+                          //         ),
                         ],
                       ),
                     ),
@@ -435,7 +720,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                               width: 250,
                               height: 100,
                               decoration: BoxDecoration(
-                                  color: Colors.blue,
+                                  color: Colors.teal[50],
                                   borderRadius: BorderRadius.circular(10))),
                           const SizedBox(
                             width: 20,
@@ -444,7 +729,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                               width: 250,
                               height: 100,
                               decoration: BoxDecoration(
-                                  color: Colors.purple,
+                                  color: Colors.purple[50],
                                   borderRadius: BorderRadius.circular(10))),
                           const SizedBox(
                             width: 20,
@@ -453,7 +738,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                               width: 250,
                               height: 100,
                               decoration: BoxDecoration(
-                                  color: Colors.red,
+                                  color: Colors.red[50],
                                   borderRadius: BorderRadius.circular(10))),
                         ],
                       ),
@@ -504,6 +789,118 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
       ),
     );
   }
+
+  Widget _buildHeader() {
+    return Row(
+      children: [
+        const CircleAvatar(
+          radius: 30,
+          backgroundImage: AssetImage('assets/images/home/mascota1.jpg'),
+        ),
+        const SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Datos de la mascota',
+              style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w600),
+            ),
+            Text(
+              'Nombre: Galleta',
+              style: GoogleFonts.redHatDisplay(),
+            ),
+            Text(
+              'Edad: 4 años',
+              style: GoogleFonts.redHatDisplay(),
+            ),
+          ],
+        ),
+        const Spacer(),
+        const CircleAvatar(
+          backgroundColor: Colors.teal,
+          child: FaIcon(
+            FontAwesomeIcons.dog,
+            color: Colors.white,
+            size: 18,
+          ),
+        ),
+      ],
+    );
+  }
+
+    Widget _buildSubtitle() {
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        _buildInfoRow(),
+        const SizedBox(height: 10),
+        _buildActionButton(),
+      ],
+    );
+  }
+
+    Widget _buildInfoRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        _buildInfoContainer(
+          icon: FontAwesomeIcons.calendarDays,
+          text: 'Lunes . 19 Enero',
+        ),
+        _buildInfoContainer(
+          icon: FontAwesomeIcons.clock,
+          text: '8:00 - 10:00',
+        ),
+      ],
+    );
+  }
+
+  Widget _buildInfoContainer({required IconData icon, required String text}) {
+    return Container(
+      height: 50,
+      width: 150,
+      decoration: BoxDecoration(
+        color: Colors.teal,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          const SizedBox(width: 10),
+          FaIcon(icon, color: Colors.white),
+          const SizedBox(width: 10),
+          Text(
+            text,
+            style: GoogleFonts.redHatDisplay(color: Colors.white),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionButton() {
+    return Row(
+      children: [
+        Expanded(
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blueGrey[500],
+              iconColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            label: Text(
+              'Ver perfil',
+              style: GoogleFonts.redHatDisplay(color: Colors.white),
+            ),
+            icon: const FaIcon(FontAwesomeIcons.bone),
+            onPressed: () {},
+          ),
+        ),
+      ],
+    );
+  }
+
 }
 
 // import 'package:flutter/material.dart';

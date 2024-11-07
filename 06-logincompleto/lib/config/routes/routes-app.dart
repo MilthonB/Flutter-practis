@@ -20,7 +20,7 @@ import 'package:animalSyncs/presentation/screens/welcome-screen.dart';
 final _sectionNavigatorkey = GlobalKey<NavigatorState>();
 final appRoutes = GoRouter(
   navigatorKey: _sectionNavigatorkey,
-  initialLocation: '/',
+  initialLocation: '/homepage',
   routes: [
     GoRoute(
       path: '/',
