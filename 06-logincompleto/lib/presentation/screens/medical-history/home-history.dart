@@ -26,10 +26,11 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
     super.dispose();
   }
 
-
-  
   final List<Map<String, String>> events = [
-    {"date": "12 Noviembre 2024", "event": "No se reporto nada\nHubo un problemota\nnada de nadota"},
+    {
+      "date": "12 Noviembre 2024",
+      "event": "No se reporto nada\nHubo un problemota\nnada de nadota"
+    },
     {"date": "15 Noviembre 2024", "event": "nada de nadota"},
     {"date": "24 Noviembre 2024", "event": "Otro texto\nasu\nasi"},
   ];
@@ -111,8 +112,14 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       ),
                       Row(
                         children: [
-                          FaIcon(FontAwesomeIcons.paw, size: 20, color: Colors.teal[900],),
-                          const SizedBox(width: 10,),
+                          FaIcon(
+                            FontAwesomeIcons.paw,
+                            size: 20,
+                            color: Colors.teal[900],
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Text(
                             'Tus Mascotas Registradas',
                             style: GoogleFonts.redHatDisplay(
@@ -438,8 +445,6 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                         ),
                       ),
 
-                      
-
                       // Card(
                       //   elevation: 5,
                       //   color:  Colors.teal[50],
@@ -606,7 +611,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       const SizedBox(
                         height: 20,
                       ),
-                      
+
                       Row(
                         children: [
                           Text(
@@ -616,8 +621,14 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                                 fontSize: 15,
                                 color: Colors.black54),
                           ),
-                          const SizedBox(width: 10,),
-                          FaIcon(FontAwesomeIcons.syringe, size: 20, color: Colors.teal[900],),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          FaIcon(
+                            FontAwesomeIcons.syringe,
+                            size: 20,
+                            color: Colors.teal[900],
+                          ),
                         ],
                       ),
                       const SizedBox(
@@ -629,11 +640,9 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                           children: [
                             Column(
                               children: [
-                                Stack(
-                                  children:[
-
-                                   Align(
-                                     child: Container(
+                                Stack(children: [
+                                  Align(
+                                    child: Container(
                                       width: 140,
                                       height: 70,
                                       // margin: EdgeInsets.only(left: 50),
@@ -662,60 +671,97 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                                           )
                                         ],
                                       ),
-                                                                       ),
-                                   ),
+                                    ),
+                                  ),
                                   Align(
                                     child: Container(
                                       height: 120,
                                       width: 140,
-                                      margin: const EdgeInsets.only(left: 0,top: 45),
+                                      margin: const EdgeInsets.only(
+                                          left: 0, top: 45),
                                       decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(color: Colors.teal[50]!, width: 2)
-                                      ),
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.teal[50]!,
+                                              width: 2)),
                                       child: Column(
                                         children: [
-                                              const SizedBox(height: 5,),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
-                                              const SizedBox(width: 10,),
-                                              FaIcon(FontAwesomeIcons.viruses, color: Colors.red[100],),
-                                              const SizedBox(width: 10,),
-                                              Text('Rabia', style: GoogleFonts.redHatDisplay(color: Colors.black, fontWeight: FontWeight.w600),),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.viruses,
+                                                color: Colors.red[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                'Rabia',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
                                             ],
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
-                                              const SizedBox(width: 10,),
-                                              FaIcon(FontAwesomeIcons.calendarDays, color: Colors.blue[100],),
-                                              const SizedBox(width: 10,),
-                                              Text('12-nov-2024', style: GoogleFonts.redHatDisplay(color: Colors.black, fontWeight: FontWeight.w600),),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.calendarDays,
+                                                color: Colors.blue[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                '12-nov-2024',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
                                             ],
                                           ),
-                                          const SizedBox(height: 5,),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.blueGrey[500],
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10)
-                                              )
-
-                                            ),
-                                          
-                                          onPressed: () {
-                                            
-                                          }, 
-                                          child: Text('Detalles', style: GoogleFonts.redHatDisplay(color: Colors.white),) 
-                                        )
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.blueGrey[500],
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Detalles',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.white),
+                                              ))
                                         ],
                                       ),
                                     ),
                                   )
-                                  ]
-                                ),
+                                ]),
                               ],
                             ),
                             const SizedBox(
@@ -723,11 +769,9 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                             ),
                             Column(
                               children: [
-                                Stack(
-                                  children:[
-
-                                   Align(
-                                     child: Container(
+                                Stack(children: [
+                                  Align(
+                                    child: Container(
                                       width: 140,
                                       height: 70,
                                       // margin: EdgeInsets.only(left: 50),
@@ -756,60 +800,97 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                                           )
                                         ],
                                       ),
-                                                                       ),
-                                   ),
+                                    ),
+                                  ),
                                   Align(
                                     child: Container(
                                       height: 120,
                                       width: 140,
-                                      margin: const EdgeInsets.only(left: 0,top: 45),
+                                      margin: const EdgeInsets.only(
+                                          left: 0, top: 45),
                                       decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(color: Colors.teal[50]!, width: 2)
-                                      ),
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.teal[50]!,
+                                              width: 2)),
                                       child: Column(
                                         children: [
-                                              const SizedBox(height: 5,),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
-                                              const SizedBox(width: 10,),
-                                              FaIcon(FontAwesomeIcons.viruses, color: Colors.red[100],),
-                                              const SizedBox(width: 10,),
-                                              Text('Rabia', style: GoogleFonts.redHatDisplay(color: Colors.black, fontWeight: FontWeight.w600),),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.viruses,
+                                                color: Colors.red[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                'Rabia',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
                                             ],
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
-                                              const SizedBox(width: 10,),
-                                              FaIcon(FontAwesomeIcons.calendarDays, color: Colors.blue[100],),
-                                              const SizedBox(width: 10,),
-                                              Text('12-nov-2024', style: GoogleFonts.redHatDisplay(color: Colors.black, fontWeight: FontWeight.w600),),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.calendarDays,
+                                                color: Colors.blue[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                '12-nov-2024',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
                                             ],
                                           ),
-                                          const SizedBox(height: 5,),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.blueGrey[500],
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10)
-                                              )
-
-                                            ),
-                                          
-                                          onPressed: () {
-                                            
-                                          }, 
-                                          child: Text('Detalles', style: GoogleFonts.redHatDisplay(color: Colors.white),) 
-                                        )
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.blueGrey[500],
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Detalles',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.white),
+                                              ))
                                         ],
                                       ),
                                     ),
                                   )
-                                  ]
-                                ),
+                                ]),
                               ],
                             ),
                             const SizedBox(
@@ -817,11 +898,9 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                             ),
                             Column(
                               children: [
-                                Stack(
-                                  children:[
-
-                                   Align(
-                                     child: Container(
+                                Stack(children: [
+                                  Align(
+                                    child: Container(
                                       width: 140,
                                       height: 70,
                                       // margin: EdgeInsets.only(left: 50),
@@ -850,60 +929,96 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                                           )
                                         ],
                                       ),
-                                                                       ),
-                                   ),
+                                    ),
+                                  ),
                                   Align(
                                     child: Container(
                                       height: 120,
                                       width: 140,
-                                      margin: const EdgeInsets.only(left: 0,top: 45),
+                                      margin: const EdgeInsets.only(
+                                          left: 0, top: 45),
                                       decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(color: Colors.black12, width: 2)
-                                      ),
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.black12, width: 2)),
                                       child: Column(
                                         children: [
-                                              const SizedBox(height: 5,),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
-                                              const SizedBox(width: 10,),
-                                              FaIcon(FontAwesomeIcons.viruses, color: Colors.blue[100],),
-                                              const SizedBox(width: 10,),
-                                              Text('Rabia', style: GoogleFonts.redHatDisplay(color: Colors.teal[900], fontWeight: FontWeight.w600),),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.viruses,
+                                                color: Colors.blue[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                'Rabia',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.teal[900],
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
                                             ],
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
-                                              const SizedBox(width: 10,),
-                                              FaIcon(FontAwesomeIcons.calendarDays, color: Colors.teal[100],),
-                                              const SizedBox(width: 10,),
-                                              Text('12-nov-2024', style: GoogleFonts.redHatDisplay(color: Colors.teal[900], fontWeight: FontWeight.w600),),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.calendarDays,
+                                                color: Colors.teal[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                '12-nov-2024',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.teal[900],
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
                                             ],
                                           ),
-                                          const SizedBox(height: 5,),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
                                           ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.blueGrey[500],
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10)
-                                              )
-
-                                            ),
-                                          
-                                          onPressed: () {
-                                            
-                                          }, 
-                                          child: Text('Detalles', style: GoogleFonts.redHatDisplay(color: Colors.white),) 
-                                        )
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.blueGrey[500],
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Detalles',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.white),
+                                              ))
                                         ],
                                       ),
                                     ),
                                   )
-                                  ]
-                                ),
+                                ]),
                               ],
                             ),
                             // Container(
@@ -1067,8 +1182,14 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                                 fontSize: 15,
                                 color: Colors.black54),
                           ),
-                          const SizedBox(width: 10,),
-                          FaIcon(FontAwesomeIcons.calendarDays, size: 20, color: Colors.teal[900],),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          FaIcon(
+                            FontAwesomeIcons.calendarDays,
+                            size: 20,
+                            color: Colors.teal[900],
+                          ),
                         ],
                       ),
 
@@ -1076,124 +1197,221 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                         height: 10,
                       ),
 
-
                       Card(
-                            elevation: 5,
-                            // color: Colors.indigo[100],
-                            color: Colors.teal[100],
-                            child: ListTile(
-                              title: Row(
-                                children: [
-                                  // SizedBox(width: 10,),
-                                  CircleAvatar(
-                                    radius: 25,
-                                    backgroundColor: Colors.white,
-                                    child: const CircleAvatar(
-                                                                  backgroundImage:
-                                    AssetImage('assets/images/home/profile.jpg'),
-                                                                  radius: 20,
-                                                                ),
-                                  ),
-                                  SizedBox(width: 15,),
-
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Jesus Ramirez', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold, color: Colors.blueGrey),),
-                                      Text('Veterinario', style: GoogleFonts.redHatDisplay(fontSize: 13, color: Colors.black45),),
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  FaIcon(FontAwesomeIcons.paw, color: Colors.white,)
-                                ],
-                              ),
-                              subtitle: Padding(
-                                padding: const EdgeInsets.only(top:8.0, bottom: 8.0),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(15),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10)
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              FaIcon(FontAwesomeIcons.calendar),
-                                              SizedBox(width: 10,),
-                                              Text('Viernes, 12 Febrero 2024', style: GoogleFonts.redHatDisplay(color: Colors.blueGrey[500]),),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              FaIcon(FontAwesomeIcons.clock),
-                                              SizedBox(width: 10,),
-                                              Text('3:00pm', style: GoogleFonts.redHatDisplay(color: Colors.blueGrey[500]),),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Expanded(
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.white,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10)
-                                              )
-                                            ),
-                                            onPressed: () {  
-                                          }, child: Text('Cancelar', style: GoogleFonts.redHatDisplay(color: Colors.black),),),
-                                        ),
-                                        SizedBox(width: 10,),
-                                        Expanded(
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.teal[300],
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10)
-                                              )
-                                            ),
-                                            onPressed: () {
-                                            
-                                          }, child: Text('Reagendar', style: GoogleFonts.redHatDisplay(color: Colors.white),),),
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                        elevation: 5,
+                        // color: Colors.indigo[100],
+                        color: Colors.teal[100],
+                        child: ListTile(
+                          title: Row(
+                            children: [
+                              // SizedBox(width: 10,),
+                              CircleAvatar(
+                                radius: 25,
+                                backgroundColor: Colors.white,
+                                child: const CircleAvatar(
+                                  backgroundImage: AssetImage(
+                                      'assets/images/home/profile.jpg'),
+                                  radius: 20,
                                 ),
                               ),
+                              SizedBox(
+                                width: 15,
+                              ),
+
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Jesus Ramirez',
+                                    style: GoogleFonts.redHatDisplay(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blueGrey),
+                                  ),
+                                  Text(
+                                    'Veterinario',
+                                    style: GoogleFonts.redHatDisplay(
+                                        fontSize: 13, color: Colors.black45),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              FaIcon(
+                                FontAwesomeIcons.paw,
+                                color: Colors.white,
+                              )
+                            ],
+                          ),
+                          subtitle: Padding(
+                            padding:
+                                const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(15),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          FaIcon(FontAwesomeIcons.calendar),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            'Viernes, 12 Febrero 2024',
+                                            style: GoogleFonts.redHatDisplay(
+                                                color: Colors.blueGrey[500]),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          FaIcon(FontAwesomeIcons.clock),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            '3:00pm',
+                                            style: GoogleFonts.redHatDisplay(
+                                                color: Colors.blueGrey[500]),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10))),
+                                        onPressed: () {},
+                                        child: Text(
+                                          'Cancelar',
+                                          style: GoogleFonts.redHatDisplay(
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.teal[300],
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10))),
+                                        onPressed: () {},
+                                        child: Text(
+                                          'Reagendar',
+                                          style: GoogleFonts.redHatDisplay(
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
                           ),
+                        ),
+                      ),
 
-                      const SizedBox(height: 10,),
-                      Text('Historial sintomas', style: GoogleFonts.redHatDisplay(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: Colors.black54),),
-                          Container(
-                            height: 300,
-                            
-                            child: Timeline.tileBuilder(
-        builder: TimelineTileBuilder.fromStyle(
-          contentsAlign: ContentsAlign.basic,
-          
-          contentsBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Text('Timeline Event $index'),
-          ),
-          itemCount: 3,
-        ),
-      ),
-    ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
                       
+                      Text(
+                        'Historial sintomas',
+                        style: GoogleFonts.redHatDisplay(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.black54),
+                      ),
+                                            const SizedBox(
+                        height: 10,
+                      ),
+
+                      // TimelineEvent( event: 'Event 1: Introduction', isFirst: true, isLast: false, ),
+                      // TimelineEvent( event: 'Event 1: Introduction', isFirst: true, isLast: false, ),
+                      // TimelineEvent( event: 'Event 1: Introduction', isFirst: true, isLast: false, ),
+
+                      Divider(),
+
+                      Center(child: Text("12, Febrero 2024", style: GoogleFonts.redHatDisplay(color: Colors.teal, fontWeight: FontWeight.bold),)),
+                      Divider(),
+                      Card(
+                        color: Colors.blue[200],
+                        // shape: ,
+                        elevation: 3,
+                        child: ListTile(
+                          leading: FaIcon(FontAwesomeIcons.circleInfo, color: Colors.white,),
+                          title: Text('9:00am - 10:30am', style: GoogleFonts.redHatDisplay(color: Colors.black, fontWeight: FontWeight.bold),),
+                          subtitle: Text('Jadeo excesivo, dificultad para respirar, tos, ruidos al respirar', style: GoogleFonts.redHatDisplay()),
+                          trailing: Badge(
+                            child: FaIcon(FontAwesomeIcons.images),
+                            label: Text('1'),
+                          ),
+                        ),
+                      ),
+                      Card(
+                        color: Colors.blue[200],
+                        // shape: ,
+                        elevation: 3,
+                        child: ListTile(
+                          leading: FaIcon(FontAwesomeIcons.circleInfo, color: Colors.white,),
+                          title: Text('12:00pm - 12:30am', style: GoogleFonts.redHatDisplay(color: Colors.black, fontWeight: FontWeight.bold),),
+                          subtitle: Text('Jadeo excesivo, dificultad para respirar, tos, ruidos al respirar', style: GoogleFonts.redHatDisplay(),),
+                          trailing: Badge(
+                            child: FaIcon(FontAwesomeIcons.images),
+                            label: Text('1'),
+                          )
+                        ),
+                      ),
+                      Card(
+                        color: Colors.white,
+                        // shape: ,
+                        elevation: 3,
+                        child: ListTile(
+                          title: Text('7:00pm - 10:30pm', style: GoogleFonts.redHatDisplay(color: Colors.teal, fontWeight: FontWeight.bold),),
+                          subtitle: Text('Jadeo excesivo, dificultad para respirar, tos, ruidos al respirar',style: GoogleFonts.redHatDisplay()),
+                          trailing: Badge(
+                            child: FaIcon(FontAwesomeIcons.images),
+                            label: Text('1'),
+                          ),
+                        ),
+                      ),
+
+
+                      // Container(
+                      //   height: 300,
+                      //   child: Timeline.tileBuilder(
+                      //     builder: TimelineTileBuilder.fromStyle(
+                      //       contentsAlign: ContentsAlign.basic,
+                      //       contentsBuilder: (context, index) => Padding(
+                      //         padding: const EdgeInsets.all(24.0),
+                      //         child: Text('Timeline Event $index'),
+                      //       ),
+                      //       itemCount: 3,
+                      //     ),
+                      //   ),
+                      // ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
                       // SingleChildScrollView(
                       //   scrollDirection: Axis.horizontal,
                       //   child: Row(
@@ -1210,9 +1428,6 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       //       //   ),
                       //       // ),
 
-                          
-                            
-                            
                       //       // Container(
                       //       //   width: 320,
                       //       //   height: 116,
@@ -1331,7 +1546,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       //       //           //     ],
                       //       //           //   ),
                       //       //           // ),
-                                      
+
                       //       //           // Container(
                       //       //           //   height: 50,
                       //       //           //   width: 120,
@@ -1476,7 +1691,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       //       //           //     ],
                       //       //           //   ),
                       //       //           // ),
-                                      
+
                       //       //           // Container(
                       //       //           //   height: 50,
                       //       //           //   width: 120,
@@ -1619,7 +1834,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       //       //           //     ],
                       //       //           //   ),
                       //       //           // ),
-                                      
+
                       //       //           // Container(
                       //       //           //   height: 50,
                       //       //           //   width: 120,
@@ -1643,8 +1858,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       //       //     ],
                       //       //   )
                       //       // ),
-                            
-                            
+
                       //       const SizedBox(
                       //         width: 20,
                       //       ),
@@ -1667,8 +1881,7 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       //     ],
                       //   ),
                       // ),
-                      
-                      
+
                       // TabBar(
                       //   labelStyle: GoogleFonts.redHatDisplay(
                       //       fontWeight: FontWeight.bold),
@@ -1970,65 +2183,72 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
 //   }
 // }
 
-
-
-
-
-class TimelineItem extends StatelessWidget {
-  final String date;
-  final String eventDescription;
+class TimelineEvent extends StatelessWidget {
+  final String event;
+  final bool isFirst;
   final bool isLast;
 
-  const TimelineItem({
-    Key? key,
-    required this.date,
-    required this.eventDescription,
-    required this.isLast,
-  }) : super(key: key);
+  TimelineEvent({
+    required this.event,
+    this.isFirst = false,
+    this.isLast = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Línea del timeline (solo entre eventos, no en el último)
-          if (!isLast)
-            Container(
-              width: 2,
-              height: 50,
-              color: Colors.blue,
-            ),
-          
-          // Círculo para el evento
-          Container(
-            width: 30,
-            height: 30,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 2),
-            ),
-            child: Center(
-              child: Text(
-                'O',  // Representación del punto en el timeline
-                style: TextStyle(color: Colors.white, fontSize: 20),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Conector superior, solo se muestra si no es el primer evento
+            if (!isFirst)
+              Container(
+                width: 4,
+                height: 30,
+                color: Colors.grey,
               ),
+            // Icono del evento
+            Icon(
+              Icons.circle,
+              size: 10,
+              color: Colors.blue,
             ),
+            // Conector inferior, solo se muestra si no es el último evento
+            if (!isLast)
+              Container(
+                width: 4,
+                height: 30,
+                color: Colors.grey,
+              ),
+          ],
+        ),
+        SizedBox(width: 8),
+        Expanded(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Container(
+                constraints: BoxConstraints(minHeight: 30), // Asegura que el contenedor tenga una altura mínima
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Text('asdasdasdakjsbaishcbasiduhasodhjadjahsdijaslishdgflhsggdlfjSGHDLFjhdkljaHSLDJHieufhldcbsEVBLWIJDBCLjcbskl;dcvjdjckjhsdkjfhsdkfjshdkfjshfkjhkhkjhdkfjshkfjshdkfjhsdfhsfwewifhksdjskdjfhskfjhskd'),
+              );
+            },
           ),
-          
-          SizedBox(height: 10),
-          
-          // Descripción del evento
-          Text(
-            date,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 5),
-          Text(eventDescription),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
