@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   Widget build(BuildContext context) {
 
     return Scaffold(
-        backgroundColor: const Color(0xFF4DB6AC),
+        backgroundColor: Colors.blueGrey[100],
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -78,8 +78,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     const SizedBox(
                       height: 50,
                     ),
-                    const CircleAvatar(
-                      backgroundColor: Colors.teal,
+                    CircleAvatar(
+                      backgroundColor: Colors.blueGrey[100],
                       radius: 80,
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
@@ -96,14 +96,34 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     const SizedBox(
                       height: 30,
                     ),
-                    Text(
-                      'AnimalSyncs!',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.redHatDisplay(
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Animal',
+                            style: GoogleFonts.redHatDisplay(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700)
+                          ),
+                          TextSpan(
+                            text: 'Syncs',
+                            style: GoogleFonts.redHatDisplay(
                           fontSize: 25,
                           color: Colors.teal,
-                          fontWeight: FontWeight.w700),
+                          fontWeight: FontWeight.w700)
+                          )
+                        ]
+                      )
                     ),
+                    // Text(
+                    //   'AnimalSyncs!',
+                    //   textAlign: TextAlign.center,
+                    //   style: GoogleFonts.redHatDisplay(
+                    //       fontSize: 25,
+                    //       color: Colors.teal,
+                    //       fontWeight: FontWeight.w700),
+                    // ),
                     Text(
                       'El cuidado de tu mascota es importante!',
                       textAlign: TextAlign.center,
@@ -178,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             alignment: AlignmentDirectional.centerEnd,
                             child: TextButton(
                               child: Text('Recuperar contraseña',
-                                  style: GoogleFonts.redHatDisplay()),
+                                  style: GoogleFonts.redHatDisplay(color: Colors.teal)),
                               onPressed: () {
                                 context.push('/securitycheckout');
                               },
@@ -192,7 +212,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             height: 60,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.teal,
+                                backgroundColor: Colors.teal[500],
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
@@ -244,7 +264,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 icon: const FaIcon(
                                   FontAwesomeIcons.facebook,
                                   size: 35,
-                                  color: Colors.teal,
+                                  color: Colors.blueGrey
+                                  ,
                                 ),
                               ),
                               // const Icon(Icons.apple, size: 35,),),

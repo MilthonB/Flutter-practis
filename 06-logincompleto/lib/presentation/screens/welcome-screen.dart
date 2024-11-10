@@ -14,11 +14,12 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
   List<String> svgList = <String>[
-    'assets/images/welcome/initial2.svg',
-    'assets/images/welcome/initial3.svg',
-    'assets/images/welcome/initial4.svg',
-    'assets/images/welcome/initial5.svg',
-    'assets/images/welcome/initial6.svg'
+    'assets/images/welcome/w1.svg',
+    'assets/images/welcome/w2.svg',
+    'assets/images/welcome/w3.svg',
+    'assets/images/welcome/w4.svg',
+    'assets/images/welcome/w5.svg',
+    'assets/images/welcome/w6.svg',
   ];
 
   List<String> textList = <String>[
@@ -26,7 +27,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     'Revelation',
     'Uncovering',
     'Detection',
-    'Discover'
+    'Discover',
+    'Search'
   ];
 
   late PageController _pageController;
