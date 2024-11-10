@@ -73,8 +73,10 @@ class _CustomBottomNavigationState extends State<_CustomBottomNavigation> {
     return BottomNavigationBar(
       currentIndex: widget.navigationShell.currentIndex,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.blue,
+      selectedItemColor: Colors.teal[400],
       backgroundColor: Colors.white,
+      // enableFeedback: false,
+      // fixedColor: Colors.red,
       unselectedItemColor: Colors.black54,
       elevation: 0,
       onTap: (value) {

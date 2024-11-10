@@ -109,7 +109,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
               child: Text(
                 'Welcome',
                 style: GoogleFonts.redHatDisplay(
-                    color: Colors.blue,
+                    color: Colors.teal,
                     fontSize: 35,
                     fontWeight: FontWeight.w800),
               ),
@@ -145,7 +145,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                             child: Text(
                               'Dreams job here',
                               style: GoogleFonts.redHatDisplay(
-                                  color: Colors.blue,
+                                  color: Colors.teal,
                                   fontSize: 35,
                                   fontWeight: FontWeight.w800),
                             ),
@@ -178,7 +178,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size(130, 50),
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.teal,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0)),
                   ),

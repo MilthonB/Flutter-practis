@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:table_calendar/table_calendar.dart';
 import 'package:timelines/timelines.dart';
 
 class HomeHistoryScreen extends StatefulWidget {
@@ -1353,29 +1354,31 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                       Center(child: Text("12, Febrero 2024", style: GoogleFonts.redHatDisplay(color: Colors.teal, fontWeight: FontWeight.bold),)),
                       Divider(),
                       Card(
-                        color: Colors.blue[200],
+                        color: Colors.white,
                         // shape: ,
                         elevation: 3,
                         child: ListTile(
-                          leading: FaIcon(FontAwesomeIcons.circleInfo, color: Colors.white,),
-                          title: Text('9:00am - 10:30am', style: GoogleFonts.redHatDisplay(color: Colors.black, fontWeight: FontWeight.bold),),
+                          leading: FaIcon(FontAwesomeIcons.circleInfo, color: Colors.teal,),
+                          title: Text('9:00am - 10:30am', style: GoogleFonts.redHatDisplay(color: Colors.teal, fontWeight: FontWeight.bold),),
                           subtitle: Text('Jadeo excesivo, dificultad para respirar, tos, ruidos al respirar', style: GoogleFonts.redHatDisplay()),
                           trailing: Badge(
-                            child: FaIcon(FontAwesomeIcons.images),
+                            backgroundColor: Colors.teal,
+                            child: FaIcon(FontAwesomeIcons.images, color: Colors.black45,),
                             label: Text('1'),
                           ),
                         ),
                       ),
                       Card(
-                        color: Colors.blue[200],
+                        color: Colors.white, 
                         // shape: ,
                         elevation: 3,
                         child: ListTile(
-                          leading: FaIcon(FontAwesomeIcons.circleInfo, color: Colors.white,),
-                          title: Text('12:00pm - 12:30am', style: GoogleFonts.redHatDisplay(color: Colors.black, fontWeight: FontWeight.bold),),
+                          leading: FaIcon(FontAwesomeIcons.circleInfo, color: Colors.teal,),
+                          title: Text('12:00pm - 12:30am', style: GoogleFonts.redHatDisplay(color: Colors.teal, fontWeight: FontWeight.bold),),
                           subtitle: Text('Jadeo excesivo, dificultad para respirar, tos, ruidos al respirar', style: GoogleFonts.redHatDisplay(),),
                           trailing: Badge(
-                            child: FaIcon(FontAwesomeIcons.images),
+                            backgroundColor: Colors.teal,
+                            child: FaIcon(FontAwesomeIcons.images, color: Colors.black45,),
                             label: Text('1'),
                           )
                         ),
@@ -1385,14 +1388,634 @@ class _HomeHistoryStateScreen extends State<HomeHistoryScreen>
                         // shape: ,
                         elevation: 3,
                         child: ListTile(
+                          leading: FaIcon(FontAwesomeIcons.circleInfo, color: Colors.teal,),
                           title: Text('7:00pm - 10:30pm', style: GoogleFonts.redHatDisplay(color: Colors.teal, fontWeight: FontWeight.bold),),
                           subtitle: Text('Jadeo excesivo, dificultad para respirar, tos, ruidos al respirar',style: GoogleFonts.redHatDisplay()),
                           trailing: Badge(
-                            child: FaIcon(FontAwesomeIcons.images),
+                            backgroundColor: Colors.teal,
+                            child: FaIcon(FontAwesomeIcons.images, color: Colors.black45,),
                             label: Text('1'),
                           ),
                         ),
                       ),
+
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      
+                      Text(
+                        'Ultima visita medica',
+                        style: GoogleFonts.redHatDisplay(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.black54),
+                      ),
+                                            const SizedBox(
+                        height: 10,
+                      ),
+
+                      Card(
+                        color: Colors.blueGrey[800],
+                        child: ListTile(
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+                              CircleAvatar(
+                                backgroundColor: Colors.teal[300],
+                                radius: 26,
+                                child: const CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('assets/images/home/profile.jpg'),
+                                radius: 25,
+                                                          ),
+                              ),
+                              Column(
+                                children: [
+                                  Text('Animal Veterinario', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold,color: Colors.teal[300]),),
+                                  Text('Mvz. Jesus Armenta', style: GoogleFonts.redHatDisplay(fontSize: 15, color: Colors.white)),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Text('NO:1120345', style: GoogleFonts.redHatDisplay(fontSize: 12,color: Colors.white),),
+                                  Text('03-15-24', style: GoogleFonts.redHatDisplay(fontSize: 12,color: Colors.white),),
+                                ],
+                              ),
+                            ],
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.center,
+                              //   children: [
+                              //     Text('Mvz. Jesus Armenta', style: GoogleFonts.redHatDisplay()),
+                              //     SizedBox(width: 10,),
+                              //     Text('Fecha: 03/15/24', style: GoogleFonts.redHatDisplay(),),
+                              //   ],
+                              // ),
+                                Center(child: Text('Clinica y hospital veterinario', style: GoogleFonts.redHatDisplay(color: Colors.teal[300]),)),
+                              Divider(),
+                                Row(
+                                  children: [
+                                    FaIcon(FontAwesomeIcons.paw, size: 15,color: Colors.teal[200],),
+                                    SizedBox(width: 10,),
+                                    Text('Paciente: Mily', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                    Spacer(),
+                                    Text('Edad: 5 Años', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                    Spacer(),
+                                    Text('Peso: 45kg', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    FaIcon(FontAwesomeIcons.solidUser, size: 15,color: Colors.teal[200]),
+                                    SizedBox(width: 10,),
+                                    Text('Propientario: Alejandro Ramirez', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                  ],
+                                ),
+                              Divider(),
+                                Align(
+                                  alignment: Alignment.topRight,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.teal[600],
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                      )   
+                                    ),
+                                    onPressed: () {
+                                    
+                                  }, child: Text('Ver mas', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold),)),
+                                )
+                            ],
+                          ),
+                        ),
+                      ),
+
+                                          const SizedBox(
+                        height: 10,
+                      ),
+
+                      Text(
+                        'Recordatorios de este mes',
+                        style: GoogleFonts.redHatDisplay(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.black54),
+                      ),
+                                            const SizedBox(
+                        height: 10,
+                      ),
+
+                      // Expanded(child: CalendarScreen()),
+
+
+                      Card(
+                        color: Colors.blueGrey[400],
+                        child: ListTile(
+                          title: Row(
+                            children: [
+                              Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.white, width: 2)
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('12', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold),),
+                                    Text('FEB', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 10,),
+                              SizedBox(width: 10,),
+                              Expanded(
+                                child: Text('Pastilla para el control de las pulgas',maxLines: 3, overflow: TextOverflow.ellipsis, style: GoogleFonts.redHatDisplay( color: Colors.white),)),
+                              FaIcon(FontAwesomeIcons.shieldDog, color: Colors.white,size: 30,),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Card(
+                        color: Colors.blueGrey[400],
+                        child: ListTile(
+                          title: Row(
+                            children: [
+                              Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.white, width: 2)
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('12', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold),),
+                                    Text('FEB', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 10,),
+                              SizedBox(width: 10,),
+                              Expanded(
+                                child: Text('Pastilla para el control de las pulgas',maxLines: 3, overflow: TextOverflow.ellipsis, style: GoogleFonts.redHatDisplay( color: Colors.white),)),
+                              FaIcon(FontAwesomeIcons.shieldDog, color: Colors.white,size: 30,),
+                            ],
+                          ),
+                        ),
+                      ),Card(
+                        color: Colors.blueGrey[400],
+                        child: ListTile(
+                          title: Row(
+                            children: [
+                              Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.white, width: 2)
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('12', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold),),
+                                    Text('FEB', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 10,),
+                              SizedBox(width: 10,),
+                              Expanded(
+                                child: Text('Pastilla para el control de las pulgas',maxLines: 3, overflow: TextOverflow.ellipsis, style: GoogleFonts.redHatDisplay( color: Colors.white),)),
+                              FaIcon(FontAwesomeIcons.shieldDog, color: Colors.white,size: 30,),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                  const SizedBox(
+                        height: 10,
+                      ),
+
+                      Text(
+                        'Historial de desparacitacion',
+                        style: GoogleFonts.redHatDisplay(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.black54),
+                      ),
+                                            const SizedBox(
+                        height: 10,
+                      ),
+
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Column(
+                              children: [
+                                Stack(children: [
+                                  Align(
+                                    child: Container(
+                                      width: 175,
+                                      height: 70,
+                                      // margin: EdgeInsets.only(left: 50),
+                                      decoration: BoxDecoration(
+                                        color: Colors.blueGrey[300],
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Center(
+                                              child: FaIcon(
+                                            FontAwesomeIcons.shieldVirus,
+                                            size: 35,
+                                            color: Colors.white,
+                                          )),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            '12 Nov 24',
+                                            style: GoogleFonts.redHatDisplay(
+                                                color: Colors.white),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    child: Container(
+                                      height: 120,
+                                      width: 175,
+                                      margin: const EdgeInsets.only(
+                                          left: 0, top: 45),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.teal[50]!,
+                                              width: 2)),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.viruses,
+                                                color: Colors.red[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                'Desparacitacion',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.calendarDays,
+                                                color: Colors.blue[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                '12-nov-2024',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.blueGrey[500],
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Detalles',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.white),
+                                              ))
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ]),
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              children: [
+                                Stack(children: [
+                                  Align(
+                                    child: Container(
+                                      width: 175,
+                                      height: 70,
+                                      // margin: EdgeInsets.only(left: 50),
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue[300],
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          const Center(
+                                              child: FaIcon(
+                                            FontAwesomeIcons.shieldVirus,
+                                            size: 35,
+                                            color: Colors.white,
+                                          )),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            '12 Nov 24',
+                                            style: GoogleFonts.redHatDisplay(
+                                                color: Colors.white),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    child: Container(
+                                      height: 120,
+                                      width: 175,
+                                      margin: const EdgeInsets.only(
+                                          left: 0, top: 45),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.teal[50]!,
+                                              width: 2)),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.viruses,
+                                                color: Colors.red[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                'Desparacitacion',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.calendarDays,
+                                                color: Colors.blue[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                '12-nov-2024',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.blueGrey[500],
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Detalles',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.white),
+                                              ))
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ]),
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              children: [
+                                Stack(children: [
+                                  Align(
+                                    child: Container(
+                                      width: 175,
+                                      height: 70,
+                                      // margin: EdgeInsets.only(left: 50),
+                                      decoration: BoxDecoration(
+                                        color: Colors.red[300],
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          const Center(
+                                              child: FaIcon(
+                                            FontAwesomeIcons.shieldVirus,
+                                            size: 35,
+                                            color: Colors.white,
+                                          )),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            '12 Nov 24',
+                                            style: GoogleFonts.redHatDisplay(
+                                                color: Colors.white),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    child: Container(
+                                      height: 120,
+                                      width: 175,
+                                      margin: const EdgeInsets.only(
+                                          left: 0, top: 45),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.black12, width: 2)),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.viruses,
+                                                color: Colors.blue[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                'Desparacitacion',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.teal[900],
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.calendarDays,
+                                                color: Colors.teal[100],
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                '12-nov-2024',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.teal[900],
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.blueGrey[500],
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Detalles',
+                                                style:
+                                                    GoogleFonts.redHatDisplay(
+                                                        color: Colors.white),
+                                              ))
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ]),
+                              ],
+                            ),
+                            
+                          ],
+                        ),
+                      ),
+                      // TableCalendar(
+                      //   focusedDay: DateTime.now(), 
+                      //   firstDay: DateTime.now(), 
+                      //   lastDay: DateTime.now()
+                      // ),
 
 
                       // Container(
@@ -2249,6 +2872,162 @@ class TimelineEvent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+
+
+
+class CalendarScreen extends StatefulWidget {
+  @override
+  _CalendarScreenState createState() => _CalendarScreenState();
+}
+
+class _CalendarScreenState extends State<CalendarScreen> {
+  late DateTime _focusedDay;
+  late DateTime _selectedDay;
+  late Map<DateTime, List<String>> _events; // Mapa de eventos
+  late Map<DateTime, Color> _dayColors; // Mapa de colores por día
+
+  @override
+  void initState() {
+    super.initState();
+    _focusedDay = DateTime.now();
+    _selectedDay = DateTime.now();
+    _events = {};
+    _dayColors = {};
+
+    // Cargar algunos eventos de ejemplo (esto puede venir de una base de datos, etc.)
+    _addEvent(DateTime.utc(2024, 11, 5), 'Reunión de equipo');
+    _addEvent(DateTime.utc(2024, 11, 12), 'Entrega de informe');
+    _addEvent(DateTime.utc(2024, 11, 15), 'Cita médica');
+
+    // Colorear algunos días
+    _colorDay(DateTime.utc(2024, 11, 5), Colors.green);
+    _colorDay(DateTime.utc(2024, 11, 12), Colors.blue);
+    _colorDay(DateTime.utc(2024, 11, 15), Colors.red);
+  }
+
+  // Función para agregar un evento a un día
+  void _addEvent(DateTime day, String event) {
+    setState(() {
+      if (_events[day] == null) {
+        _events[day] = [];
+      }
+      _events[day]?.add(event);
+    });
+  }
+
+  // Función para asignar un color a un día
+  void _colorDay(DateTime day, Color color) {
+    setState(() {
+      _dayColors[day] = color;
+    });
+  }
+
+  // Mostrar un diálogo con los pendientes de un día
+  void _showEventDialog(DateTime day) {
+    List<String>? dayEvents = _events[day];
+    if (dayEvents == null || dayEvents.isEmpty) {
+      dayEvents = ['No hay pendientes para este día.'];
+    }
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Eventos del ${day.day}/${day.month}/${day.year}'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: dayEvents!.map((event) {
+              return Text(event);
+            }).toList(),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cerrar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Calendario con Eventos'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              setState(() {
+                _focusedDay = DateTime(_focusedDay.year, _focusedDay.month - 1, 1);
+              });
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.arrow_forward),
+            onPressed: () {
+              setState(() {
+                _focusedDay = DateTime(_focusedDay.year, _focusedDay.month + 1, 1);
+              });
+            },
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            // Calendario
+            TableCalendar(
+              firstDay: DateTime.utc(2020, 1, 1),
+              lastDay: DateTime.utc(2030, 12, 31),
+              focusedDay: _focusedDay,
+              selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+              onDaySelected: (selectedDay, focusedDay) {
+                setState(() {
+                  _selectedDay = selectedDay;
+                  _focusedDay = focusedDay;
+                });
+                // Mostrar el diálogo con los eventos cuando se toque un día
+                if (_dayColors[selectedDay] != null) {
+                  _showEventDialog(selectedDay);
+                }
+              },
+              eventLoader: (day) {
+                return _events[day] ?? [];
+              },
+              calendarStyle: CalendarStyle(
+                todayDecoration: BoxDecoration(
+                  color: Colors.blue,
+                  shape: BoxShape.circle,
+                ),
+                selectedDecoration: BoxDecoration(
+                  color: Colors.orange,
+                  shape: BoxShape.circle,
+                ),
+                // Colorear los días según el mapa _dayColors
+                markersMaxCount: 1,
+                markerDecoration: BoxDecoration(
+                  color: Colors.red, // Default color for markers
+                  shape: BoxShape.circle,
+                ),
+              ),
+              headerStyle: HeaderStyle(
+                formatButtonVisible: false, // Ocultar el formato de vista de semana/mes
+                titleCentered: true, // Centrar el título
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

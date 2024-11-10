@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   Widget build(BuildContext context) {
 
     return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 132, 183, 255),
+        backgroundColor: const Color(0xFF4DB6AC),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       height: 50,
                     ),
                     const CircleAvatar(
-                      backgroundColor: Color.fromARGB(255, 109, 170, 255),
+                      backgroundColor: Colors.teal,
                       radius: 80,
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       textAlign: TextAlign.center,
                       style: GoogleFonts.redHatDisplay(
                           fontSize: 25,
-                          color: Color.fromARGB(255, 93, 196, 255),
+                          color: Colors.teal,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
@@ -192,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             height: 60,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFF00B0FF),
+                                backgroundColor: Colors.teal,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
@@ -244,7 +244,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 icon: const FaIcon(
                                   FontAwesomeIcons.facebook,
                                   size: 35,
-                                  color: Colors.blue,
+                                  color: Colors.teal,
                                 ),
                               ),
                               // const Icon(Icons.apple, size: 35,),),
@@ -257,7 +257,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   color: Colors.black54,
                                 ),
                               ),
-                              //const Icon(Icons.facebook, size: 35, color: Colors.blue,),),
+                              //const Icon(Icons.facebook, size: 35, color: Colors.teal,),),
                               // Spacer(),
                               IconButton(
                                 onPressed: () {},
@@ -287,7 +287,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   },
                                   child: Text('Registrate',
                                       style: GoogleFonts.redHatDisplay(
-                                          color: const Color(0xFF00B0FF),
+                                          color: Colors.teal,
                                           fontWeight: FontWeight.bold)),
                                 ))
                               ])),
