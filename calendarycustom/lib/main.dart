@@ -14,38 +14,142 @@ class _AgendaAppState extends State<AgendaApp> {
   // Fecha inicial (por ejemplo, diciembre de 2024)
   DateTime selectedDate = DateTime(2024, 12, 1);
 
-  // Lista de fechas a resaltar
-  final List<DateTime> highlightedDates = [
-    DateTime(2024, 12, 20),
-    DateTime(2024, 12, 25),
-    DateTime(2024, 12, 30),
-  ];
-
-  // Mapa para guardar los colores de las fechas seleccionadas
-  final Map<DateTime, Color> selectedDatesColors = {};
+  // Mapa para guardar las citas de cada día
+  final Map<DateTime, List<Map<String, dynamic>>> dayCitas = {};
 
   // Fecha actualmente seleccionada para mostrar detalles
-  DateTime? selectedDayForDetails;
+  DateTime? selectedDayForDetails = DateTime.now();
 
-  // Modo actual: 'week' para ver una semana, 'month' para ver todo el mes
-  String viewMode = 'month';
+  // Lista de horarios predefinidos para mostrar (horario militar de 6:00 a 18:00)
+  List<String> availableTimes = [
+    '06:00 - 07:00',
+    '07:00 - 08:00',
+    '08:00 - 09:00',
+    '09:00 - 10:00',
+    '10:00 - 11:00',
+    '11:00 - 12:00',
+    '12:00 - 13:00',
+    '13:00 - 14:00',
+    '14:00 - 15:00',
+    '15:00 - 16:00',
+    '16:00 - 17:00',
+    '17:00 - 18:00',
+  ];
 
-  // Simulamos citas para el día seleccionado
-  List<String> getCitasForSelectedDay(DateTime selectedDay) {
-    // Esta es una lista de citas simuladas, en un caso real podrías obtener esto de una base de datos
-    if (selectedDay.year == 2024 && selectedDay.month == 12) {
-      if (selectedDay.day == 20) {
-        return [
-          "10:00 AM - Cita con el dentista",
-          "2:00 PM - Reunión de trabajo",
-        ];
-      } else if (selectedDay.day == 25) {
-        return ["9:00 AM - Cena con amigos"];
-      } else {
-        return ["8:00 AM - Desayuno", "5:00 PM - Cita médica"];
+  // Simula obtener las citas para un día
+  List<Map<String, dynamic>> getCitasForSelectedDay(DateTime selectedDay) {
+    return dayCitas[selectedDay] ?? [];
+  }
+
+  // Verificar si una hora tiene una cita para un día
+  bool isTimeTaken(DateTime selectedDay, String time) {
+    List<Map<String, dynamic>> citas = dayCitas[selectedDay] ?? [];
+    for (var cita in citas) {
+      if (cita['time'] == time) {
+        return true; // La hora ya está ocupada
       }
     }
-    return []; // No hay citas para otros días
+    return false; // La hora está disponible
+  }
+
+  // Mostrar el cuadro de diálogo para agregar una cita
+  void _showCitaDialog(DateTime selectedDay, String time) {
+    final TextEditingController commentController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Agregar cita para el ${selectedDay.toLocal()}".split(' ')[0]),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("¿Qué quieres agregar?"),
+              TextField(
+                controller: commentController,
+                decoration: InputDecoration(hintText: "Ingrese un comentario para la cita"),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  // Agregar cita
+                  if (dayCitas[selectedDay] == null) {
+                    dayCitas[selectedDay] = [];
+                  }
+                  dayCitas[selectedDay]?.add({
+                    'time': time,
+                    'comment': commentController.text,
+                  });
+                });
+                Navigator.pop(context);
+              },
+              child: Text("Guardar"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Cancelar"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Mostrar el cuadro de diálogo para editar o eliminar la cita
+  void _showEditCitaDialog(DateTime selectedDay, Map<String, dynamic> cita) {
+    final TextEditingController commentController = TextEditingController(text: cita['comment']);
+    String selectedTime = cita['time'];
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Editar cita para el ${selectedDay.toLocal()}".split(' ')[0]),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: commentController,
+                decoration: InputDecoration(hintText: "Editar comentario"),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  // Actualizar cita
+                  cita['comment'] = commentController.text;
+                });
+                Navigator.pop(context);
+              },
+              child: Text("Guardar cambios"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Eliminar cita
+                setState(() {
+                  dayCitas[selectedDay]?.remove(cita);
+                });
+                Navigator.pop(context);
+              },
+              child: Text("Eliminar cita"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Cancelar"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -63,101 +167,40 @@ class _AgendaAppState extends State<AgendaApp> {
             ),
           ),
 
-          // Switch para alternar entre vista mensual y semanal
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Ver Semana",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Switch(
-                  value: viewMode == 'week', // Si está en modo "semana", el switch estará activado
-                  onChanged: (bool newValue) {
-                    setState(() {
-                      viewMode = newValue ? 'week' : 'month'; // Cambiar entre semana y mes
-                      if (viewMode == 'week') {
-                        // Si está en vista semanal, mostrar la semana actual
-                        selectedDate = DateTime.now();
-                      }
-                    });
-                  },
-                ),
-                Text(
-                  "Ver Mes",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-
           // Calendario en GridView
-          Expanded(
+          Container(
+            height: 300, // Establecer altura fija para el GridView
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 7, // 7 columnas (días de la semana)
                 childAspectRatio: 1.0,
               ),
-              itemCount: viewMode == 'month' ? _daysInMonth(selectedDate) : 7,  // Mostrar 7 días si es vista semanal
+              itemCount: 31,  // Mostrar los primeros 31 días
               itemBuilder: (context, index) {
-                DateTime currentDay = viewMode == 'month'
-                    ? _getDateFromIndex(index)  // Para vista mensual
-                    : _getStartOfWeek().add(Duration(days: index));  // Para vista semanal
-                bool isHighlighted = highlightedDates.any((highlightedDate) =>
-                    highlightedDate.year == currentDay.year &&
-                    highlightedDate.month == currentDay.month &&
-                    highlightedDate.day == currentDay.day);
-                bool isSelected = selectedDayForDetails != null &&
-                    selectedDayForDetails!.year == currentDay.year &&
-                    selectedDayForDetails!.month == currentDay.month &&
-                    selectedDayForDetails!.day == currentDay.day;
-
-                // Si el día ha sido seleccionado previamente, asignar el color guardado
-                Color? dayColor = selectedDatesColors[currentDay];
+                DateTime currentDay = DateTime(selectedDate.year, selectedDate.month, index + 1);
+                bool hasCitas = dayCitas.containsKey(currentDay) && dayCitas[currentDay]!.isNotEmpty;
 
                 return GestureDetector(
                   onTap: () {
                     setState(() {
-                      // Establecer el día seleccionado para detalles
                       selectedDayForDetails = currentDay;
-                      // Generar un color aleatorio para el día seleccionado
-                      selectedDatesColors[currentDay] = Colors.primaries[Random().nextInt(Colors.primaries.length)];
                     });
                   },
                   child: Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: dayColor ?? (isSelected
-                          ? Colors.blueAccent // Color para fecha seleccionada
-                          : isHighlighted
-                              ? Colors.redAccent // Color para fechas resaltadas
-                              : Colors.transparent),
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(12),  // Curvatura de los bordes
+                      color: hasCitas ? Colors.blueAccent : Colors.transparent,
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // Mostrar las primeras dos letras del día de la semana
-                        Text(
-                          _getDayOfWeek(currentDay),
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        // Mostrar el número del día
                         Text(
                           '${currentDay.day}',
                           style: TextStyle(
                             fontSize: 18,
-                            color: isSelected || isHighlighted || dayColor != null
-                                ? Colors.white
-                                : Colors.black,
+                            color: hasCitas ? Colors.white : Colors.black,
                           ),
                         ),
                       ],
@@ -168,71 +211,66 @@ class _AgendaAppState extends State<AgendaApp> {
             ),
           ),
 
-          // Agregar un espacio entre el calendario y las citas
-          SizedBox(height: 20),
-
-          // Si hay un día seleccionado, mostrar las citas de ese día
-          if (selectedDayForDetails != null) 
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Text(
-                    'Citas para el ${selectedDayForDetails!.toLocal().toString().split(' ')[0]}',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
-                  // Mostrar las citas
-                  ...getCitasForSelectedDay(selectedDayForDetails!).map((cita) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5.0),
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[100],
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(Icons.access_time, color: Colors.blue),
-                            Text(cita, style: TextStyle(fontSize: 16)),
-                          ],
+          // Mostrar horas disponibles y citas en el panel principal
+          if (selectedDayForDetails != null)
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Mostrar horas disponibles
+                    Wrap(
+                      spacing: 8.0,
+                      runSpacing: 4.0,
+                      children: availableTimes.map((time) {
+                        bool isTaken = isTimeTaken(selectedDayForDetails!, time); // Verifica si la hora ya está ocupada
+                        return GestureDetector(
+                          onTap: () {
+                            if (isTaken) {
+                              // Si la hora está ocupada, abrir el cuadro de diálogo para editar o eliminar
+                              var cita = dayCitas[selectedDayForDetails]!.firstWhere((cita) => cita['time'] == time);
+                              _showEditCitaDialog(selectedDayForDetails!, cita);
+                            } else {
+                              // Si la hora está disponible, abrir el cuadro de diálogo para agregar una cita
+                              _showCitaDialog(selectedDayForDetails!, time);
+                            }
+                          },
+                          child: Chip(
+                            label: Text(time),
+                            backgroundColor: isTaken ? Colors.grey : Colors.green, // Color según disponibilidad
+                            labelStyle: TextStyle(color: Colors.white),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: 10), // Espacio entre horas disponibles y citas
+                    // Mostrar citas con SingleChildScrollView en Expanded
+                    if (getCitasForSelectedDay(selectedDayForDetails!).isNotEmpty)
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: getCitasForSelectedDay(selectedDayForDetails!).map((cita) {
+                              return ListTile(
+                                title: Text(cita['time']),
+                                subtitle: Text(cita['comment']),
+                                trailing: IconButton(
+                                  icon: Icon(Icons.edit),
+                                  onPressed: () {
+                                    _showEditCitaDialog(selectedDayForDetails!, cita);
+                                  },
+                                ),
+                              );
+                            }).toList(),
+                          ),
                         ),
                       ),
-                    );
-                  }).toList(),
-                ],
+                  ],
+                ),
               ),
             ),
         ],
       ),
     );
-  }
-
-  // Devuelve el número de días en el mes
-  int _daysInMonth(DateTime date) {
-    final firstDayOfMonth = DateTime(date.year, date.month, 1);
-    final lastDayOfMonth = DateTime(date.year, date.month + 1, 0);
-    return lastDayOfMonth.day;
-  }
-
-  // Devuelve la fecha correspondiente al índice de la grilla (mes)
-  DateTime _getDateFromIndex(int index) {
-    final firstDayOfMonth = DateTime(selectedDate.year, selectedDate.month, 1);
-    return firstDayOfMonth.add(Duration(days: index));
-  }
-
-  // Devuelve la fecha del inicio de la semana (lunes) que contiene la fecha de hoy
-  DateTime _getStartOfWeek() {
-    // Ajustamos la fecha al inicio de la semana (lunes)
-    DateTime startOfWeek = DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1));
-    return DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day);
-  }
-
-  // Obtiene las primeras dos letras del día de la semana
-  String _getDayOfWeek(DateTime date) {
-    List<String> daysOfWeek = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
-    return daysOfWeek[date.weekday - 1]; // weekday empieza en 1 (lunes) hasta 7 (domingo)
   }
 }
