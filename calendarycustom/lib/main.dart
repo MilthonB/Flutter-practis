@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MaterialApp(home: AgendaApp()));
@@ -12,13 +13,13 @@ class AgendaApp extends StatefulWidget {
 
 class _AgendaAppState extends State<AgendaApp> {
   // Fecha inicial (por ejemplo, diciembre de 2024)
-  DateTime selectedDate = DateTime(2024, 12, 1);
+  DateTime selectedDate = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
   // Mapa para guardar las citas de cada día
   final Map<DateTime, List<Map<String, dynamic>>> dayCitas = {};
 
   // Fecha actualmente seleccionada para mostrar detalles
-  DateTime? selectedDayForDetails = DateTime.now();
+  DateTime? selectedDayForDetails = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
   // Lista de horarios predefinidos para mostrar (horario militar de 6:00 a 18:00)
   List<String> availableTimes = [
@@ -35,6 +36,18 @@ class _AgendaAppState extends State<AgendaApp> {
     '16:00 - 17:00',
     '17:00 - 18:00',
   ];
+
+  // Controlador del Switch (para alternar entre vista de semana y mes)
+  bool showWeekView = false;
+
+  // Función para obtener la semana actual (de lunes a domingo)
+  List<DateTime> getWeekDates(DateTime date) {
+    int weekday = date.weekday;
+    DateTime startOfWeek = date.subtract(Duration(days: weekday - 1));
+    List<DateTime> listweek = List.generate(7, (index) => startOfWeek.add(Duration(days: index)));
+    print(listweek);
+    return listweek;
+  }
 
   // Simula obtener las citas para un día
   List<Map<String, dynamic>> getCitasForSelectedDay(DateTime selectedDay) {
@@ -152,22 +165,91 @@ class _AgendaAppState extends State<AgendaApp> {
     );
   }
 
+  // Función para avanzar un mes, manteniendo el mismo día si es posible
+  void _nextMonth() {
+    setState(() {
+      // Sumar un mes al mes actual
+      DateTime nextMonth = DateTime(selectedDate.year, selectedDate.month + 1, selectedDate.day);
+      
+      // Si el día no existe en el siguiente mes (por ejemplo, 31 de enero), ajustamos al último día del mes siguiente
+      if (nextMonth.month != selectedDate.month + 1) {
+        // Ajustamos a la última fecha del mes siguiente
+        selectedDate = DateTime(selectedDate.year, selectedDate.month + 2, 0); 
+      } else {
+        selectedDate = nextMonth;
+      }
+    });
+  }
+
+  // Función para retroceder un mes, manteniendo el mismo día si es posible
+  void _prevMonth() {
+    setState(() {
+      // Restar un mes al mes actual
+      DateTime prevMonth = DateTime(selectedDate.year, selectedDate.month - 1, selectedDate.day);
+      
+      // Si el día no existe en el mes anterior (por ejemplo, 31 de marzo a febrero), ajustamos al último día del mes anterior
+      if (prevMonth.month != selectedDate.month - 1) {
+        // Ajustamos a la última fecha del mes anterior
+        selectedDate = DateTime(selectedDate.year, selectedDate.month, 0); 
+      } else {
+        selectedDate = prevMonth;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    Color colorContainer = Colors.white;
+
+    // Determinar los días de la semana a mostrar
+    List<DateTime> daysToDisplay;
+    if (showWeekView) {
+      daysToDisplay = getWeekDates(selectedDate); // Mostrar solo la semana actual
+    } else {
+      daysToDisplay = List.generate(
+        DateTime(selectedDate.year, selectedDate.month + 1, 0).day,
+        (index) => DateTime(selectedDate.year, selectedDate.month, index + 1),
+      ); // Mostrar todo el mes
+    }
+
     return Scaffold(
       appBar: AppBar(title: Text("Agenda Personalizada")),
       body: Column(
         children: [
-          // Título del mes
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "${selectedDate.month}/${selectedDate.year}",
-              style: TextStyle(fontSize: 24),
-            ),
+          // Botones para navegar entre meses
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: _prevMonth, // Función para retroceder un mes
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "${DateFormat('MMMM yyyy').format(selectedDate)}", // Mostrar el mes y año seleccionados
+                  style: TextStyle(fontSize: 24),
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.arrow_forward),
+                onPressed: _nextMonth, // Función para avanzar un mes
+              ),
+            ],
           ),
 
-          // Calendario en GridView
+          // Switch para alternar entre vista semanal y mensual
+          SwitchListTile(
+            title: Text("Ver semana en lugar de mes"),
+            value: showWeekView,
+            onChanged: (bool value) {
+              setState(() {
+                showWeekView = value;
+              });
+            },
+          ),
+
+          // Calendario en GridView (ya sea una semana o todo el mes)
           Container(
             height: 300, // Establecer altura fija para el GridView
             child: GridView.builder(
@@ -175,21 +257,22 @@ class _AgendaAppState extends State<AgendaApp> {
                 crossAxisCount: 7, // 7 columnas (días de la semana)
                 childAspectRatio: 1.0,
               ),
-              itemCount: 31,  // Mostrar los primeros 31 días
+              itemCount: daysToDisplay.length,
               itemBuilder: (context, index) {
-                DateTime currentDay = DateTime(selectedDate.year, selectedDate.month, index + 1);
+                DateTime currentDay = daysToDisplay[index];
                 bool hasCitas = dayCitas.containsKey(currentDay) && dayCitas[currentDay]!.isNotEmpty;
 
                 return GestureDetector(
                   onTap: () {
                     setState(() {
                       selectedDayForDetails = currentDay;
+                      selectedDate = selectedDayForDetails!;
                     });
                   },
                   child: Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: hasCitas ? Colors.blueAccent : Colors.transparent,
+                      color: _colorContainer(currentDay, hasCitas),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -272,5 +355,15 @@ class _AgendaAppState extends State<AgendaApp> {
         ],
       ),
     );
+  }
+
+  Color _colorContainer(DateTime date, bool hasClient) {
+    // Determinamos si la fecha es hoy
+    bool isToday = date.year == DateTime.now().year &&
+                   date.month == DateTime.now().month &&
+                   date.day == DateTime.now().day;
+
+    // Devolver el color según el caso
+    return isToday ? Colors.teal : (hasClient ? Colors.blue : Colors.transparent);
   }
 }
