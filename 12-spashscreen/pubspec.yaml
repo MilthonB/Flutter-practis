@@ -1,0 +1,39 @@
+name: spashscreen
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_native_splash: ^2.4.3
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+
+flutter_native_splash:
+  color: "#ff0000"
+  image: assets/login1.png
+  branding: assets/login1.png
+  color_dark: "#ab0000"
+  image_dark: assets/login1.png
+  branding_dark: assets/login1.png
+
+  android_12:
+    image: assets/login1.png
+    icon_background_color: "#ff0000"
+    image_dark: assets/login1.png
+    icon_background_color_dark: "#ab0000"
+
+  web: false
+
