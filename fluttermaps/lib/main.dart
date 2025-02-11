@@ -76,7 +76,7 @@ class _GPSLocationMapState extends State<GPSLocationMap> {
         _center = _currentPosition; // Movemos el mapa al nuevo centro
         _routePoints.add(_currentPosition); // Añadimos el nuevo punto a la ruta
 
-        // mapController.move(_currentPosition, _zoom);
+        mapController.move(_currentPosition, _zoom);
       });
     });
   }
